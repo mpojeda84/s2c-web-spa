@@ -1,0 +1,114 @@
+<div class="panel panel-default s2c-margin-top s2c-padding">
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+            From:
+            <select class="form-control" style="width:85px" ng-model="moneyOffer.currencyOrigin" ng-options="c for c in ['USD','EUR']">
+            </select>
+
+            Minimum:
+            <input type="text" id="minimum"
+                   ng-model="moneyOffer.minimum"
+                   style="width: 85px;"
+                   class="form-control"/>
+
+        </div>
+        <div class="col-md-2 column">
+            To:
+            <select class="form-control" style="width:85px" ng-model="moneyOffer.currencyTarget" ng-options="c for c in ['CUC','USD', 'EUR']">
+            </select>
+
+            Maximum:
+            <input type="text" id="maximun"
+                   ng-model="moneyOffer.maximum"
+                   style="width: 85px;"
+                   class="form-control"/>
+
+        </div>
+        <div class="col-md-2 column">
+            Fee:
+            <select class="form-control" style="width:70px" ng-model="moneyOffer.fee" ng-options="n for n in [] | range:5:15">
+            </select>
+
+            <input style="margin-top: 25px;" type="checkbox" ng-model="moneyOffer.special"/>
+            Special
+        </div>
+        <div class="col-md-6 column">
+            <region-selector selected="selected" columns="2"></region-selector>
+        </div>
+    </div>
+    <div style="height: 30px;">
+        <button class="btn pull-right" ng-click="saveMoneyOffer()">Save</button>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="col-md-12 column">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>
+                    From
+                </th>
+                <th>
+                    To
+                </th>
+                <th>
+                    Fee
+                </th>
+                <th>
+                    Min
+                </th>
+                <th>
+                    Max
+                </th>
+                <th>
+                    Special
+                </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Del
+                </th>
+            </tr>
+            </thead>
+
+            <tbody ng-show="moneyOffers == null ||moneyOffers.length == 0">
+                <tr>
+                    <td colspan="8">There are no offers yet</td>
+                </tr>
+            </tbody>
+
+            <tbody ng-show="moneyOffers.length > 0">
+
+            <tr ng-repeat="offer in moneyOffers"
+                ng-class-even="'active'">
+                <td>
+                    {{offer.currencyOrigin}}
+                </td>
+                <td>
+                    {{offer.currencyTarget}}
+                </td>
+                <td>
+                    {{offer.fee}}
+                </td>
+                <td>
+                    {{offer.minimum}}
+                </td>
+                <td>
+                    {{offer.maximum}}
+                </td>
+                <td>
+                    {{offer.special}}
+                </td>
+                <td>
+                    <a href="" ng-click="editMoneyOffer($index)">Edit</a>
+                </td>
+                <td>
+                    <a href="" ng-click="deleteMoneyOffer($index)">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="row clearfix">
+    <div class="column col-md-6">
+        <div class="row clearfix">
+            <div class="col-md-7 column">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" ng-model="business.name"
+                       class="form-control"/>
+            </div>
+            <div class="col-md-5 column">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" ng-model="business.phone"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <label for="url">Website</label>
+                <input type="text" id="url" name="url" ng-model="business.url"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <label for="address">Location</label>
+                <input type="text" id="address" class="form-control" ng-autocomplete="result" details="details" options="options"/>
+            </div>
+        </div>
+    </div>
+    <div class="column col-md-6">
+
+    </div>
+</div>

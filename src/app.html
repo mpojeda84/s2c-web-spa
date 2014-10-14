@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <script src="../libraries/bower_components/angular/angular.js"></script>
+  <script src="../libraries/bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="../libraries/bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="../libraries/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="../libraries/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="../libraries/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="../libraries/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="../libraries/bower_components/angular-translate/angular-translate.js"></script>
+  <script src="../libraries/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+  <script src="../libraries/bower_components/ng-table/ng-table.js"></script>
+  <script src='//maps.googleapis.com/maps/api/js?libraries=places&sensor=false'></script>
+  <script src='../libraries/isolated_libraries/lodash.underscore.js'></script>
+  <script src='../libraries/isolated_libraries/ngAutocomplete.js'></script>
+  <script src='../libraries/bower_components/angular-google-maps/dist/angular-google-maps.js'></script>
+  <script src='../libraries/bower_components/jquery/dist/jquery.js'></script>
+
+  <script src="app.js"></script>
+  <script src="app-controllers.js"></script>
+  <script src="app-directives.js"></script>
+  <script src="app-services.js"></script>
+  <script src="app-filters.js"></script>
+
+  <script src="business-management/business-management.js"></script>
+  <script src="business-management/business-management-controllers.js"></script>
+  <script src="business-management/business-management-directives.js"></script>
+  <script src="business-management/business-management-filters.js"></script>
+  <script src="business-management/business-management-services.js"></script>
+
+  <script src="business-management/basic-information/basic-information-controllers.js"></script>
+  <script src="business-management/basic-information/basic-information-services.js"></script>
+
+  <script src="business-management/money-offer/money-offer-controllers.js"></script>
+  <script src="business-management/money-offer/money-offer-services.js"></script>
+
+  <script src="components/region-selector/region-selector.js"></script>
+  <script src="components/region-selector/region-selector-controllers.js"></script>
+  <script src="components/region-selector/region-selector-directives.js"></script>
+  <script src="components/region-selector/region-selector-filters.js"></script>
+  <script src="components/region-selector/region-selector-services.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../libraries/bower_components/bootstrap/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" type="text/css" href="../libraries/bower_components/ng-table/ng-table.css"/>
+  <link rel="stylesheet" type="text/css" href="app.css"/>
+</head>
+
+<body>
+ 
+
+<div class="container" ng-controller="appCtrl">
+     <div>
+        <a href="" ng-click="switchLanguage('es_CU')" translate>GLOBAL.LANG_ES_CU</a>
+        &nbsp; | &nbsp;
+        <a href="" ng-click="switchLanguage('en_US')" translate>GLOBAL.LANG_EN_US</a>
+    </div>
+
+    <div style="background: black; color: white; height: 50px;text-align: center;padding: 5px; border-radius: 5px;">
+        <span style="font-size: 30px">Sent 2 Cuba</span>
+    </div>
+
+    <div ui-view></div>
+</div>
+
+   
+</body>
+</html>

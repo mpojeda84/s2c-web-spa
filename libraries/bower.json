@@ -1,0 +1,24 @@
+{
+  "name": "s2c",
+  "description": "Send2Cuba client app",
+  "version": "0.0.1",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "",
+    "angular-animate": "",
+    "angular-cookies": "",
+    "ng-table": "",
+    "angular-sanitize": "",
+    "angular-mocks": "",
+    "bootstrap": "",
+    "angular-route": "",
+    "angular-resource": "",
+    "angular-bootstrap": "",
+    "angular-ui-router": "",
+    "angular-translate": "",
+    "angular-translate-loader-static-files" : "",
+    "angular-google-maps": ""
+
+  }
+}

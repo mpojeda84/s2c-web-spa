@@ -1,0 +1,31 @@
+<div class="row clearfix">
+    <div class="col-md-12 column">
+Select Regions:
+        <div ng-show="columns == 1">
+            <ul class="list-unstyled">
+                <li ng-repeat="region in regions">
+                    <input type="checkbox" ng-model="region.checked"/> <span ng-bind="region.name"></span>
+                </li>
+            </ul>
+        </div>
+        <div ng-show="columns == 2">
+            <div class="row clearfix">
+                <div class="column col-md-6">
+                    <ul class="list-unstyled">
+                        <li ng-repeat="region in regions | column:1:2">
+                            <input type="checkbox" ng-model="region.checked"/> <span ng-bind="region.name"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="column col-md-6">
+                    <ul class="list-unstyled">
+                        <li ng-repeat="region in regions | column:2:2">
+                            <input type="checkbox" ng-model="region.checked"/> <span ng-bind="region.name"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
