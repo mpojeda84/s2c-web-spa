@@ -30,7 +30,17 @@ businessManagement
             };
         },
         newPackageOffer:function(){
-            //code constructor for PackageOffer
+            return {
+                id:null,
+                active:null,
+                description:null,
+                special:null,
+                minimumWeight:1,
+                maximumWeight:100,
+                maximumSize:null,
+                pickup:null,
+                category:null
+            }
         }
     }
 

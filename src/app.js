@@ -34,6 +34,11 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
             templateUrl: 'business-management/money-offer/money-offer.html',
             controller:'moneyOfferCtrl'
         })
+        .state('business.package', {
+            url: '/business/package',
+            templateUrl: 'business-management/package-offer/package-offer.html',
+            controller:'packageOfferCtrl'
+        })
         .state('search', {
             url: '/search',
             templateUrl: 'search/search.html'
