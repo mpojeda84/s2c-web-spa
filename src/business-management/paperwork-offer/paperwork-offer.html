@@ -1,0 +1,99 @@
+<div class="panel panel-default s2c-margin-top s2c-padding">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="type">Type</label>
+                <select class="form-control" id="type" ng-model="paperworkOffer.type">
+                    <option>Passport Updates</option>
+                    <option>Residence</option>
+                    <option>Citizenship</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="paperworkOffer.special">
+                    Special
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="paperworkOffer.active">
+                    Active
+                </label>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+
+            <textarea class="form-control" rows="3" ng-model="paperworkOffer.description"></textarea>
+        </div>
+    </div>
+    <br/>
+    <div style="height: 30px;">
+        <button class="btn pull-right" ng-click="savePaperworkOffer()">Save</button>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="col-md-12">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Special
+                </th>
+                <th>
+                    Active
+                </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Del
+                </th>
+            </tr>
+            </thead>
+
+            <tbody ng-show="paperworkOffers == null ||paperworkOffers.length == 0">
+                <tr>
+                    <td colspan="8">There are no offers yet</td>
+                </tr>
+            </tbody>
+
+            <tbody ng-show="paperworkOffers.length > 0">
+
+            <tr ng-repeat="offer in paperworkOffers"
+                ng-class-even="'active'">
+                <td>
+                    {{offer.type}}
+                </td>
+                <td>
+                    {{offer.description}}
+                </td>
+                <td>
+                    {{offer.special}}
+                </td>
+                <td>
+                    {{offer.active}}
+                </td>
+                <td>
+                    <a href="" ng-click="editPaperworkOffer($index)">Edit</a>
+                </td>
+                <td>
+                    <a href="" ng-click="deletePaperworkOffer($index)">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

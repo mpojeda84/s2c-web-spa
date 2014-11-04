@@ -1,0 +1,82 @@
+<div class="panel panel-default s2c-margin-top s2c-padding">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="callOffer.special">
+                    Special
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="callOffer.active">
+                    Active
+                </label>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <textarea class="form-control" rows="3" ng-model="callOffer.description"></textarea>
+        </div>
+    </div>
+    <br/>
+    <div style="height: 30px;">
+        <button class="btn pull-right" ng-click="saveCallOffer()">Save</button>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="col-md-12">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Special
+                </th>
+                <th>
+                    Active
+                </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Del
+                </th>
+            </tr>
+            </thead>
+
+            <tbody ng-show="callOffers == null ||callOffers.length == 0">
+                <tr>
+                    <td colspan="5">There are no offers yet</td>
+                </tr>
+            </tbody>
+
+            <tbody ng-show="callOffers.length > 0">
+
+            <tr ng-repeat="offer in callOffers"
+                ng-class-even="'active'">
+                <td>
+                    {{offer.description}}
+                </td>
+                <td>
+                    {{offer.special}}
+                </td>
+                <td>
+                    {{offer.active}}
+                </td>
+                <td>
+                    <a href="" ng-click="editCallOffer($index)">Edit</a>
+                </td>
+                <td>
+                    <a href="" ng-click="deleteCallOffer($index)">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -39,6 +39,21 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
             templateUrl: 'business-management/package-offer/package-offer.html',
             controller:'packageOfferCtrl'
         })
+        .state('business.paperwork', {
+            url: '/business/paperwork',
+            templateUrl: 'business-management/paperwork-offer/paperwork-offer.html',
+            controller:'paperworkOfferCtrl'
+        })
+        .state('business.call', {
+            url: '/business/call',
+            templateUrl: 'business-management/call-offer/call-offer.html',
+            controller:'callOfferCtrl'
+        })
+        .state('business.flight', {
+            url: '/business/flight',
+            templateUrl: 'business-management/flight-offer/flight-offer.html',
+            controller:'flightOfferCtrl'
+        })
         .state('search', {
             url: '/search',
             templateUrl: 'search/search.html'
