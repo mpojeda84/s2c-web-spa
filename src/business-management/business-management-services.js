@@ -15,6 +15,9 @@ businessManagement
         },
         moneyOffers:[],
         packageOffers:[],
+        paperworkOffers:[],
+        callOffers:[],
+        flightOffers:[],
         //initializers, just to serve as a structure declaration of this objects
         newMoneyOffer:function(){
             return{
@@ -40,6 +43,34 @@ businessManagement
                 maximumSize:null,
                 pickup:null,
                 category:null
+            }
+        },
+        newPaperworkOffer:function(){
+            return {
+                id:null,
+                active:null,
+                description:null,
+                special:null,
+                type:null
+            }
+        },
+        newCallOffer:function(){
+            return {
+                id:null,
+                active:null,
+                description:null,
+                special:null
+            }
+        },
+        newFlightOffer:function(){
+            return {
+                id:null,
+                active:null,
+                description:null,
+                special:null,
+                arrivalPort:null,
+                departurePort:null,
+                lastUpdated:null
             }
         }
     }
