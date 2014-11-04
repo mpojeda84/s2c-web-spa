@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" ng-app="app">
 <head>
+  <title>Sent2Cuba</title>
   <script src="../libraries/bower_components/angular/angular.js"></script>
   <script src="../libraries/bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="../libraries/bower_components/angular-cookies/angular-cookies.js"></script>
@@ -47,7 +48,10 @@
   <script src="business-management/flight-offer/flight-offer-controllers.js"></script>
   <script src="business-management/flight-offer/flight-offer-services.js"></script>
 
-    <script src="components/region-selector/region-selector.js"></script>
+  <script src="business-management/home-information/home-information-controllers.js"></script>
+  <script src="business-management/home-information/home-information-services.js"></script>
+
+  <script src="components/region-selector/region-selector.js"></script>
   <script src="components/region-selector/region-selector-controllers.js"></script>
   <script src="components/region-selector/region-selector-directives.js"></script>
   <script src="components/region-selector/region-selector-filters.js"></script>
@@ -59,19 +63,28 @@
 </head>
 
 <body>
- 
+
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container" ng-controller="appCtrl">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Sent2Cuba</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="" ng-click="switchLanguage('es_CU')" translate>GLOBAL.LANG_ES_CU</a></li>
+                <li><a href="" ng-click="switchLanguage('en_US')" translate>GLOBAL.LANG_EN_US</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <div class="container" ng-controller="appCtrl">
-     <div>
-        <a href="" ng-click="switchLanguage('es_CU')" translate>GLOBAL.LANG_ES_CU</a>
-        &nbsp; | &nbsp;
-        <a href="" ng-click="switchLanguage('en_US')" translate>GLOBAL.LANG_EN_US</a>
-    </div>
-
-    <div style="background: black; color: white; height: 50px;text-align: center;padding: 5px; border-radius: 5px;">
-        <span style="font-size: 30px">Sent 2 Cuba</span>
-    </div>
-
     <div ui-view></div>
 </div>
 

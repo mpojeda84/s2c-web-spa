@@ -1,64 +1,69 @@
-<div class="panel panel-default s2c-margin-top s2c-padding">
-    <div class="row clearfix">
-        <div class="col-md-2">
-            Minimum Weight:
-            <input type="text" id="min"
-                   ng-model="packageOffer.minimumWeight"
-                   style="width: 85px;"
-                   class="form-control"/>
-            Maximum Size:
-            <input type="text" id="maxSize"
-                   ng-model="packageOffer.maximumSize"
-                   style="width: 85px;"
-                   class="form-control"/>
-        </div>
-        <div class="col-md-3">
-            Maximum Weight:
-            <input type="text" id="max"
-                   ng-model="packageOffer.maximumWeight"
-                   style="width: 85px;"
-                   class="form-control"/>
-            Package Category:
-            <select class="form-control" style="width:85px" ng-model="packageOffer.category" ng-options="c for c in ['A','B', 'C']">
-            </select>
-        </div>
-        <div class="col-md-2">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" ng-model="packageOffer.pickup">
-                    Pickup
-                </label>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="min">Min. Weight</label>
+                    <input type="number" id="min"
+                           ng-model="packageOffer.minimumWeight"
+                           class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="maxSize">Max. Size</label>
+                    <input type="number" id="maxSize"
+                           ng-model="packageOffer.maximumSize"
+                           class="form-control"/>
+                </div>
             </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" ng-model="packageOffer.special">
-                    Special
-                </label>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="max">Max. Weight</label>
+                    <input type="number" id="max"
+                           ng-model="packageOffer.maximumWeight"
+                           class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="categ">Package Category</label>
+                    <select id="categ" class="form-control" ng-model="packageOffer.category" ng-options="c for c in ['A','B', 'C']"></select>
+                </div>
             </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" ng-model="packageOffer.active">
-                    Active
-                </label>
+            <div class="col-md-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="packageOffer.pickup">
+                        Pickup
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="packageOffer.special">
+                        Special
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="packageOffer.active">
+                        Active
+                    </label>
+                </div>
             </div>
-        </div>
 
-        <div class="col-md-5">
-            <region-selector selected="selected" columns="2"></region-selector>
+            <div class="col-md-5">
+                <region-selector selected="selected" columns="2"></region-selector>
+            </div>
         </div>
-    </div>
-    <br/>
-    <div class="row">
-        <div class="col-md-12">
-            <textarea class="form-control" rows="3" ng-model="packageOffer.description"></textarea>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label>Description</label>
+                <textarea class="form-control" rows="3" ng-model="packageOffer.description"></textarea>
+            </div>
         </div>
-    </div>
-    <br/>
-    <div style="height: 30px;">
-        <button class="btn pull-right" ng-click="savePackageOffer()">Save</button>
+        <div>
+            <button class="btn btn-success pull-right" ng-click="savePackageOffer()">Save</button>
+        </div>
     </div>
 </div>
-<div class="row clearfix">
+<div class="row">
     <div class="col-md-12">
 
         <table class="table table-striped">
@@ -96,7 +101,7 @@
 
             <tbody ng-show="packageOffers == null ||packageOffers.length == 0">
                 <tr>
-                    <td colspan="8">There are no offers yet</td>
+                    <td colspan="9">There are no offers yet</td>
                 </tr>
             </tbody>
 
