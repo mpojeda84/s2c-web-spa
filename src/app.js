@@ -24,6 +24,11 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
             templateUrl: 'business-management/business-management.html',
             controller: 'businessManagementCtrl'
         })
+        .state('business.home', {
+            url: '/business/home',
+            templateUrl: 'business-management/home-information/home-information.html',
+            controller: 'homeInformationCtrl'
+        })
         .state('business.basic', {
             url: '/business/basic',
             templateUrl: 'business-management/basic-information/basic-information.html',

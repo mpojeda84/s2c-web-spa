@@ -1,48 +1,65 @@
-<div class="panel panel-default s2c-margin-top s2c-padding">
-    <div class="row clearfix">
-        <div class="col-md-2 column">
-            From:
-            <select class="form-control" style="width:85px" ng-model="moneyOffer.currencyOrigin" ng-options="c for c in ['USD','EUR']">
-            </select>
-
-            Minimum:
-            <input type="text" id="minimum"
-                   ng-model="moneyOffer.minimum"
-                   style="width: 85px;"
-                   class="form-control"/>
-
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="currenOrig">From</label>
+                    <select id="currenOrig" class="form-control" ng-model="moneyOffer.currencyOrigin" ng-options="c for c in ['USD','EUR']"></select>
+                </div>
+                <div class="form-group">
+                    <label for="minimum">Minimum</label>
+                    <input type="number" id="minimum"
+                           ng-model="moneyOffer.minimum"
+                           class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="currenTarg">To</label>
+                    <select id="currenTarg" class="form-control" ng-model="moneyOffer.currencyTarget" ng-options="c for c in ['CUC','USD', 'EUR']"></select>
+                </div>
+                <div class="form-group">
+                    <label for="currenTarg">Maximum</label>
+                    <input type="number" id="maximun"
+                           ng-model="moneyOffer.maximum"
+                           class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="fee">Fee</label>
+                    <select id="fee" class="form-control" ng-model="moneyOffer.fee" ng-options="n for n in [] | range:5:15"></select>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="moneyOffer.special">
+                        Special
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="moneyOffer.active">
+                        Active
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <region-selector selected="selected" columns="2"></region-selector>
+            </div>
         </div>
-        <div class="col-md-2 column">
-            To:
-            <select class="form-control" style="width:85px" ng-model="moneyOffer.currencyTarget" ng-options="c for c in ['CUC','USD', 'EUR']">
-            </select>
-
-            Maximum:
-            <input type="text" id="maximun"
-                   ng-model="moneyOffer.maximum"
-                   style="width: 85px;"
-                   class="form-control"/>
-
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label>Description</label>
+                <textarea class="form-control" rows="3" ng-model="moneyOffer.description"></textarea>
+            </div>
         </div>
-        <div class="col-md-2 column">
-            Fee:
-            <select class="form-control" style="width:70px" ng-model="moneyOffer.fee" ng-options="n for n in [] | range:5:15">
-            </select>
-
-            <input style="margin-top: 25px;" type="checkbox" ng-model="moneyOffer.special"/>
-            Special
+        <div>
+            <button class="btn btn-success pull-right " ng-click="saveMoneyOffer()">Save</button>
         </div>
-        <div class="col-md-6 column">
-            <region-selector selected="selected" columns="2"></region-selector>
-        </div>
-    </div>
-    <div style="height: 30px;">
-        <button class="btn pull-right" ng-click="saveMoneyOffer()">Save</button>
-    </div>
+  </div>
 </div>
-<div class="row clearfix">
-    <div class="col-md-12 column">
-
+<div class="row">
+    <div class="col-md-12">
         <table class="table table-striped">
             <thead>
             <tr>

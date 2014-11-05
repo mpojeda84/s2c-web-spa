@@ -1,29 +1,32 @@
-<div class="panel panel-default s2c-margin-top s2c-padding">
-    <div class="row">
-        <div class="col-md-2">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" ng-model="callOffer.special">
-                    Special
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" ng-model="callOffer.active">
-                    Active
-                </label>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="callOffer.special">
+                        Special
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="callOffer.active">
+                        Active
+                    </label>
+                </div>
             </div>
         </div>
-    </div>
-    <br/>
-    <div class="row">
-        <div class="col-md-12">
-            <textarea class="form-control" rows="3" ng-model="callOffer.description"></textarea>
+        <br/>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label>Description</label>
+                <textarea class="form-control" rows="3" ng-model="callOffer.description"></textarea>
+            </div>
         </div>
-    </div>
-    <br/>
-    <div style="height: 30px;">
-        <button class="btn pull-right" ng-click="saveCallOffer()">Save</button>
+        <br/>
+        <div>
+            <button class="btn btn-success pull-right" ng-click="saveCallOffer()">Save</button>
+        </div>
     </div>
 </div>
 <div class="row clearfix">
