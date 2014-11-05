@@ -27,37 +27,44 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
         .state('business.home', {
             url: '/business/home',
             templateUrl: 'business-management/home-information/home-information.html',
-            controller: 'homeInformationCtrl'
+            controller: 'homeInformationCtrl',
+            data: { subtitle: 'Home'}
         })
         .state('business.basic', {
             url: '/business/basic',
             templateUrl: 'business-management/basic-information/basic-information.html',
-            controller: 'basicInformationCtrl'
+            controller: 'basicInformationCtrl',
+            data: { subtitle: 'Basic Information' }
         })
         .state('business.money', {
             url: '/business/money',
             templateUrl: 'business-management/money-offer/money-offer.html',
-            controller:'moneyOfferCtrl'
+            controller:'moneyOfferCtrl',
+            data: { subtitle: 'Money Offers' }
         })
         .state('business.package', {
             url: '/business/package',
             templateUrl: 'business-management/package-offer/package-offer.html',
-            controller:'packageOfferCtrl'
+            controller:'packageOfferCtrl',
+            data: { subtitle: 'Package Offers' }
         })
         .state('business.paperwork', {
             url: '/business/paperwork',
             templateUrl: 'business-management/paperwork-offer/paperwork-offer.html',
-            controller:'paperworkOfferCtrl'
+            controller:'paperworkOfferCtrl',
+            data: { subtitle: 'Paperwork Offers' }
         })
         .state('business.call', {
             url: '/business/call',
             templateUrl: 'business-management/call-offer/call-offer.html',
-            controller:'callOfferCtrl'
+            controller:'callOfferCtrl',
+            data: { subtitle: 'Call Offers' }
         })
         .state('business.flight', {
             url: '/business/flight',
             templateUrl: 'business-management/flight-offer/flight-offer.html',
-            controller:'flightOfferCtrl'
+            controller:'flightOfferCtrl',
+            data: { subtitle: 'Flight Offers' }
         })
         .state('search', {
             url: '/search',
@@ -65,8 +72,8 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
         })
     ;
     $urlRouterProvider
-        .when('', '/business/basic')
-        .when('/', '/business/basic');
+        .when('', '/business/home')
+        .when('/', '/business/home');
 
     $translateProvider.useStaticFilesLoader({
         prefix: 'common/translation/locale-',
