@@ -1,0 +1,160 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-5">
+                <label for="dep">Departure Date</label>
+                <p class="input-group">
+                    <input id="dep" type="text" class="form-control" datepicker-popup="MM/dd/yyyy" ng-model="packageOffer.departureDate" is-open="opened" min-date="minDate" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="min">Min. Weight</label>
+                    <input type="number" id="min"
+                           ng-model="packageOffer.minimumWeight"
+                           class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="maxSize">Max. Size</label>
+                    <input type="number" id="maxSize"
+                           ng-model="packageOffer.maximumSize"
+                           class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="max">Max. Weight</label>
+                    <input type="number" id="max"
+                           ng-model="packageOffer.maximumWeight"
+                           class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="categ">Package Category</label>
+                    <select id="categ" class="form-control" ng-model="packageOffer.category" ng-options="c for c in ['A','B', 'C']"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="packageOffer.pickup">
+                        Pickup
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="packageOffer.special">
+                        Special
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="packageOffer.active">
+                        Active
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <region-selector selected="selected" columns="2"></region-selector>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label>Description</label>
+                <textarea class="form-control" rows="3" ng-model="packageOffer.description"></textarea>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-success pull-right" ng-click="savePackageOffer()">Save</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>
+                    Departure Date
+                </th>
+                <th>
+                    Minimum Weight
+                </th>
+                <th>
+                    Maximum Weight
+                </th>
+                <th>
+                    Maximum Size
+                </th>
+                <th>
+                    Package Category
+                </th>
+                <th>
+                    Pickup
+                </th>
+                <th>
+                    Special
+                </th>
+                <th>
+                    Active
+                </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Del
+                </th>
+            </tr>
+            </thead>
+
+            <tbody ng-show="packageOffers == null ||packageOffers.length == 0">
+                <tr>
+                    <td colspan="10">There are no offers yet</td>
+                </tr>
+            </tbody>
+
+            <tbody ng-show="packageOffers.length > 0">
+
+            <tr ng-repeat="offer in packageOffers"
+                ng-class-even="'active'">
+                <td>
+                    {{offer.departureDate | date: 'MM/dd/yyyy'}}
+                </td>
+                <td>
+                    {{offer.minimumWeight}}
+                </td>
+                <td>
+                    {{offer.maximumWeight}}
+                </td>
+                <td>
+                    {{offer.maximumSize}}
+                </td>
+                <td>
+                    {{offer.category}}
+                </td>
+                <td>
+                    {{offer.pickup}}
+                </td>
+                <td>
+                    {{offer.special}}
+                </td>
+                <td>
+                    {{offer.active}}
+                </td>
+                <td>
+                    <a href="" ng-click="editPackageOffer($index)">Edit</a>
+                </td>
+                <td>
+                    <a href="" ng-click="deletePackageOffer($index)">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
