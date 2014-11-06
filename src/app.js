@@ -82,13 +82,13 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
         .state('personal.basic', {
             url: '/personal/basic',
             templateUrl: 'personal-management/basic-information/basic-information.html',
-            controller: 'basicInformationCtrl',
+            controller: 'basicInformationPersonalCtrl',
             data: { subtitle: 'Basic Information' }
         })
         .state('personal.package', {
             url: '/personal/package',
             templateUrl: 'personal-management/package-offer/package-offer.html',
-            controller:'packageOfferCtrl',
+            controller:'packageOfferPersonalCtrl',
             data: { subtitle: 'Package Offers' }
         })
         .state('search', {

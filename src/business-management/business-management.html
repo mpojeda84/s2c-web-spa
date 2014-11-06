@@ -8,18 +8,18 @@
                 <ul class="nav">
                     <li><a ui-sref="business.home">Home</a></li>
                     <li><a ui-sref="business.basic">Basic Information</a></li>
-                    <li><a ui-sref="business.money">Money Offers</a></li>
-                    <li><a ui-sref="business.package">Package Offers</a></li>
-                    <li><a ui-sref="business.paperwork">Paperwork Offers</a></li>
-                    <li><a ui-sref="business.call">Call Offers</a></li>
-                    <li><a ui-sref="business.flight">Flight Offers</a></li>
+                    <li><a ui-sref="business.money">Money Offers<span class="badge pull-right active">{{ moneyOffers.length }}</span></a></li>
+                    <li><a ui-sref="business.package">Package Offers<span class="badge pull-right">{{ packageOffers.length }}</span></a></li>
+                    <li><a ui-sref="business.paperwork">Paperwork Offers<span class="badge pull-right">{{ paperworkOffers.length }}</span></a></li>
+                    <li><a ui-sref="business.call">Call Offers<span class="badge pull-right">{{ callOffers.length }}</span></a></li>
+                    <li><a ui-sref="business.flight">Flight Offers<span class="badge pull-right">{{ flightOffers.length }}</span></a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="column col-md-9">
 
-        <div s2c-disabled="{{true}}" >
+        <div s2c-disabled="{{false}}" >
             <ui-view></ui-view>
         </div>
     </div>

@@ -1,6 +1,6 @@
 
 personalManagement
-    .controller('basicInformationCtrl', ['$rootScope', '$scope','$http', '$log','$modal', '$state', 'mapSrv', 'personalPersistenceSrv',
+    .controller('basicInformationPersonalCtrl', ['$rootScope', '$scope','$http', '$log','$modal', '$state', 'mapSrv', 'personalPersistenceSrv',
         function($rootScope, $scope,  $http, $log, $modal, $state, mapSrv, personalPersistenceSrv) {
 
             //autocomplete for address

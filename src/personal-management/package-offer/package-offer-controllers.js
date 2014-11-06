@@ -1,6 +1,6 @@
 
 personalManagement
-    .controller('packageOfferCtrl', ['$rootScope', '$scope','$log','$modal', '$state', 'personalPersistenceSrv', '$filter',
+    .controller('packageOfferPersonalCtrl', ['$rootScope', '$scope','$log','$modal', '$state', 'personalPersistenceSrv', '$filter',
         function($rootScope, $scope, $log, $modal, $state, personalPersistenceSrv, $filter) {
             $scope.personalPersistenceSrv = personalPersistenceSrv;
 
