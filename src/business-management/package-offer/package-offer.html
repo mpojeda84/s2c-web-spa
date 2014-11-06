@@ -15,7 +15,7 @@
                            class="form-control"/>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="form-group">
                     <label for="max">Max. Weight</label>
                     <input type="number" id="max"
@@ -23,7 +23,7 @@
                            class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label for="categ">Package Category</label>
+                    <label for="categ">Category</label>
                     <select id="categ" class="form-control" ng-model="packageOffer.category" ng-options="c for c in ['A','B', 'C']"></select>
                 </div>
             </div>
@@ -48,8 +48,8 @@
                 </div>
             </div>
 
-            <div class="col-md-5">
-                <region-selector selected="selected" columns="2"></region-selector>
+            <div class="col-md-6">
+                <region-selector selected="selected" columns="3"></region-selector>
             </div>
         </div>
         <div class="row">
