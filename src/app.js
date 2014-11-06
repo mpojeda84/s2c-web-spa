@@ -11,7 +11,8 @@ var app = angular.module('app', [
     'appControllers',
     'appDirectives',
     //logical modules:
-    'businessManagement' //,
+    'businessManagement',
+    'personalManagement' //,
     //reusable components:
     //'component1'
 ]);
@@ -65,6 +66,30 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
             templateUrl: 'business-management/flight-offer/flight-offer.html',
             controller:'flightOfferCtrl',
             data: { subtitle: 'Flight Offers' }
+        })
+        // Personal
+        .state('personal', {
+            abstract:true,
+            templateUrl: 'personal-management/personal-management.html',
+            controller: 'personalManagementCtrl'
+        })
+        .state('personal.home', {
+            url: '/personal/home',
+            templateUrl: 'personal-management/home-information/home-information.html',
+            controller: 'homeInformationCtrl',
+            data: { subtitle: 'Home'}
+        })
+        .state('personal.basic', {
+            url: '/personal/basic',
+            templateUrl: 'personal-management/basic-information/basic-information.html',
+            controller: 'basicInformationCtrl',
+            data: { subtitle: 'Basic Information' }
+        })
+        .state('personal.package', {
+            url: '/personal/package',
+            templateUrl: 'personal-management/package-offer/package-offer.html',
+            controller:'packageOfferCtrl',
+            data: { subtitle: 'Package Offers' }
         })
         .state('search', {
             url: '/search',
