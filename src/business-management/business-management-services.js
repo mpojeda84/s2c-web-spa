@@ -10,6 +10,7 @@ businessManagement
             id:null,
             name:null,
             phone:null,
+            website:null,
             location:null,
             locationDetails:null,
             disclose:false

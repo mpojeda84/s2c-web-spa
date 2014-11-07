@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
-            <div class=" col-md-7">
+            <div class=" col-md-12">
                 <div class="row">
                     <div class="col-md-7">
                         <div class="form-group">
@@ -15,6 +15,15 @@
                             <label for="phone">Phone</label>
                             <input type="text" id="phone" name="phone" ng-model="business.phone"
                                    class="form-control" placeholder="Phone"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="url">Website</label>
+                            <input type="text" id="url" name="url" ng-model="business.url"
+                                   class="form-control" placeholder="www.mycompany.com"/>
                         </div>
                     </div>
                 </div>
@@ -41,9 +50,6 @@
                 <div>
                     <button class="btn pull-right btn-success" ng-click="saveBasicInformation()">Save</button>
                 </div>
-            </div>
-            <div class=" col-md-5">
-
             </div>
         </div>
     </div>
