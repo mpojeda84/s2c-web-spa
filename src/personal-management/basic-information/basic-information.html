@@ -1,16 +1,25 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
-            <div class=" col-md-7">
+            <div class=" col-md-12">
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" ng-model="personal.name"
                                    class="form-control" placeholder="Name"/>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select  class="form-control" ng-model="personal.gender" id="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="phone">Phone</label>
                             <input type="text" id="phone" name="phone" ng-model="personal.phone"
@@ -41,9 +50,6 @@
                 <div>
                     <button class="btn pull-right btn-success" ng-click="saveBasicInformation()">Save</button>
                 </div>
-            </div>
-            <div class=" col-md-5">
-
             </div>
         </div>
     </div>

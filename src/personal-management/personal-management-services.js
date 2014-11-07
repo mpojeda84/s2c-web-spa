@@ -5,6 +5,7 @@ personalManagement
         basicInformation:{
             id:null,
             name:null,
+            gender:null,
             phone:null,
             location:null,
             locationDetails:null,
