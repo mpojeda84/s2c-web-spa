@@ -12,6 +12,8 @@ businessManagement
 
             $scope.deletePaperworkOffer = function(index){
                 $scope.paperworkOffers.splice(index,1);
+                if($scope.index === index)
+                    $scope.paperworkOffer = businessPersistenceSrv.newPaperworkOffer();
             };
 
             $scope.editPaperworkOffer = function(index){

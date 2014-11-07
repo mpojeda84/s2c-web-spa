@@ -26,5 +26,22 @@ personalManagement
             }
         }
     }
-});
+}).factory('menuPersonalPersistenceSrv', function(){
+        return {
+            menuItems:[{
+                name: "Home",
+                checked: true,
+                url: 'personal.home'
+            },{
+                name: "Basic Information",
+                checked: true,
+                url: 'personal.basic'
+            },{
+                name: "Package Offers",
+                checked: false,
+                url: 'personal.package',
+                count: 'packageOffers.length'
+            }]
+        }
+    });
 

@@ -12,6 +12,8 @@ businessManagement
 
             $scope.deleteFlightOffer = function(index){
                 $scope.flightOffers.splice(index,1);
+                if($scope.index === index)
+                    $scope.flightOffer = businessPersistenceSrv.newFlightOffer();
             };
 
             $scope.editFlightOffer = function(index){
