@@ -10,8 +10,9 @@ businessManagement
             id:null,
             name:null,
             phone:null,
-            website:null,
-            location:null
+            location:null,
+            locationDetails:null,
+            disclose:false
         },
         moneyOffers:[],
         packageOffers:[],

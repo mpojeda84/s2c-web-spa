@@ -6,8 +6,9 @@ personalManagement
             id:null,
             name:null,
             phone:null,
-            website:null,
-            location:null
+            location:null,
+            locationDetails:null,
+            disclose:false
         },
         packageOffers:[],
         //initializers, just to serve as a structure declaration of this objects
