@@ -3,11 +3,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="arrivalPort">Departure Port</label>
-                    <input type="text" class="form-control" id="arrivalPort" placeholder="Arrival Port" ng-model="flightOffer.arrivalPort">
-                </div>
-                <div class="form-group">
-                    <label for="departurePort">Arrival Port</label>
+                    <label for="departurePort">Departure Port</label>
                     <input type="text" class="form-control" id="departurePort" placeholder="Departure Port" ng-model="flightOffer.departurePort">
                 </div>
             </div>
@@ -24,6 +20,9 @@
                         Active
                     </label>
                 </div>
+            </div>
+            <div class="col-md-6">
+                <region-selector selected="selected" columns="3"></region-selector>
             </div>
         </div>
         <div class="row">
