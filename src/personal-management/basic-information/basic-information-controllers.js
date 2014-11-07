@@ -8,4 +8,13 @@ personalManagement
             $scope.options = null;
             $scope.details = '';
 
+            $scope.personal = angular.copy(personalPersistenceSrv.basicInformation);
+
+            $scope.saveBasicInformation = function () {
+                if($scope.result != '') {
+                    $scope.personal.location = $scope.result;
+                    $scope.personal.locationDetails = $scope.details;
+                }
+                personalPersistenceSrv.basicInformation = $scope.personal;
+            }
         }]);
