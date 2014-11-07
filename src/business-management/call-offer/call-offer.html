@@ -2,6 +2,14 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-2">
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" id="price"
+                           ng-model="callOffer.price"
+                           class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-2">
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" ng-model="callOffer.special">
@@ -36,6 +44,9 @@
             <thead>
             <tr>
                 <th>
+                    Price
+                </th>
+                <th>
                     Description
                 </th>
                 <th>
@@ -63,6 +74,9 @@
 
             <tr ng-repeat="offer in callOffers"
                 ng-class-even="'active'">
+                <td>
+                    {{offer.price}}
+                </td>
                 <td>
                     {{offer.description}}
                 </td>

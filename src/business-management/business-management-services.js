@@ -60,7 +60,8 @@ businessManagement
                 id:null,
                 active:null,
                 description:null,
-                special:null
+                special:null,
+                price:null
             }
         },
         newFlightOffer:function(){
