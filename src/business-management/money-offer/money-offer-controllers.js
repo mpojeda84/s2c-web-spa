@@ -12,6 +12,8 @@ businessManagement
 
             $scope.deleteMoneyOffer = function(index){
                 $scope.moneyOffers.splice(index,1);
+                if($scope.index === index)
+                    $scope.moneyOffers = businessPersistenceSrv.newMoneyOffer();
             };
 
             $scope.editMoneyOffer = function(index){

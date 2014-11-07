@@ -5,15 +5,21 @@
     <div class="col-md-3">
         <div class="navbar">
             <div class="navbar-inner">
-                <ul class="nav">
-                    <li><a ui-sref="personal.home">Home</a></li>
-                    <li><a ui-sref="personal.basic">Basic Information</a></li>
-                    <li><a ui-sref="personal.package">Package Offers<span class="badge pull-right">{{ packageOffers.length }}</a></li>
+                <ul class="s2c-nav">
+                    <li ng-repeat="item in menu">
+                        <div ng-click="handleCheck(item)">
+                            <a ng-if="item.url.indexOf('.home') != -1 || item.url.indexOf('.basic') != -1" href="">{{ item.name }}</a>
+                            <input ng-if="item.url.indexOf('.home') == -1 && item.url.indexOf('.basic') == -1" type="checkbox" ng-model="item.checked">
+                            <a ng-if="item.url.indexOf('.home') == -1 && item.url.indexOf('.basic') == -1" href="">{{ item.name }}<span class="badge pull-right">{{ $eval(item.count) }}</span></a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="column col-md-9">
-        <ui-view></ui-view>
+        <div s2c-disabled="!menuItem.checked" >
+            <ui-view></ui-view>
+        </div>
     </div>
 </div>

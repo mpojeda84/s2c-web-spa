@@ -12,6 +12,8 @@ businessManagement
 
             $scope.deleteCallOffer = function(index){
                 $scope.callOffers.splice(index,1);
+                if($scope.index === index)
+                    $scope.callOffer = businessPersistenceSrv.newCallOffer();
             };
 
             $scope.editCallOffer = function(index){

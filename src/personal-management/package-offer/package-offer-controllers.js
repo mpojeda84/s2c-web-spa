@@ -10,6 +10,8 @@ personalManagement
 
             $scope.deletePackageOffer = function(index){
                 $scope.packageOffers.splice(index,1);
+                if($scope.index === index)
+                    $scope.packageOffer = personalPersistenceSrv.newPackageOffer();
             };
 
             $scope.editPackageOffer = function(index){

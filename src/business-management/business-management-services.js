@@ -75,5 +75,44 @@ businessManagement
         }
     }
 
+}).factory('menuPersistenceSrv', function() {
+    return {
+        menuItems:[{
+                name: "Home",
+                checked: true,
+                url: 'business.home'
+            },{
+                name: "Basic Information",
+                checked: true,
+                url: 'business.basic'
+            },{
+                name: "Money Offers",
+                checked: false,
+                url: 'business.money',
+                count: 'moneyOffers.length'
+            },{
+                name: "Package Offers",
+                checked: false,
+                url: 'business.package',
+                count: 'packageOffers.length'
+            },{
+                name: "Paperwork Offers",
+                checked: false,
+                url: 'business.paperwork',
+                count: 'paperworkOffers.length'
+            }
+            ,{
+                name: "Call Offers",
+                checked: false,
+                url: 'business.call',
+                count: 'callOffers.length'
+            }
+            ,{
+                name: "Flight Offers",
+                checked: false,
+                url: 'business.flight',
+                count: 'flightOffers.length'
+            }]
+    }
 });
 
