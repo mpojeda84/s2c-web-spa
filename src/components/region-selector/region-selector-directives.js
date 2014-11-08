@@ -7,7 +7,8 @@ regionSelector
         restrict: 'E',
         scope: {
             selected: '=',
-            columns: '='
+            columns: '=',
+            title: '@'
         },
         controller: 'regionSelectorCtrl',
         link: function(scope, element, attrs) {
