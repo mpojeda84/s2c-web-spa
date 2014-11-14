@@ -4,7 +4,6 @@
 businessManagement
     .controller('paperworkOfferCtrl', ['$rootScope', '$scope','$log','$modal', '$state', 'businessPersistenceSrv', '$filter',
         function($rootScope, $scope, $log, $modal, $state, businessPersistenceSrv, $filter) {
-            $scope.businessPersistenceSrv = businessPersistenceSrv;
 
             $scope.paperworkOffer = businessPersistenceSrv.newPaperworkOffer();
             $scope.index = -1;

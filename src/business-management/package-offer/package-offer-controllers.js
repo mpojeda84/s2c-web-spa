@@ -4,7 +4,6 @@
 businessManagement
     .controller('packageOfferCtrl', ['$rootScope', '$scope','$log','$modal', '$state', 'businessPersistenceSrv', '$filter',
         function($rootScope, $scope, $log, $modal, $state, businessPersistenceSrv, $filter) {
-            $scope.businessPersistenceSrv = businessPersistenceSrv;
 
             $scope.packageOffer = businessPersistenceSrv.newPackageOffer();
             $scope.index = -1;

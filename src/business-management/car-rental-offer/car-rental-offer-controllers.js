@@ -4,7 +4,6 @@
 businessManagement
     .controller('carRentalOfferCtrl', ['$rootScope', '$scope','$log','$modal', '$state', 'businessPersistenceSrv', '$filter',
         function($rootScope, $scope, $log, $modal, $state, businessPersistenceSrv, $filter) {
-            $scope.businessPersistenceSrv = businessPersistenceSrv;
 
             $scope.carRentalOffer = businessPersistenceSrv.newCarRentalOffer();
             $scope.index = -1;

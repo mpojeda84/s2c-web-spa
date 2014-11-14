@@ -4,7 +4,6 @@
 businessManagement
     .controller('callOfferCtrl', ['$rootScope', '$scope','$log','$modal', '$state', 'businessPersistenceSrv', '$filter',
         function($rootScope, $scope, $log, $modal, $state, businessPersistenceSrv, $filter) {
-            $scope.businessPersistenceSrv = businessPersistenceSrv;
 
             $scope.callOffer = businessPersistenceSrv.newCallOffer();
             $scope.index = -1;
