@@ -20,6 +20,7 @@ businessManagement
         paperworkOffers:[],
         callOffers:[],
         flightOffers:[],
+        carRentalOffers:[],
         //initializers, just to serve as a structure declaration of this objects
         newMoneyOffer:function(){
             return{
@@ -75,6 +76,17 @@ businessManagement
                 departurePort:null,
                 lastUpdated:null
             }
+        },
+        newCarRentalOffer:function(){
+            return {
+                id:null,
+                active:null,
+                description:null,
+                special:null,
+                category:null,
+                price:0,
+                numDays:1
+            }
         }
     }
 
@@ -115,6 +127,12 @@ businessManagement
                 checked: false,
                 url: 'business.flight',
                 count: 'flightOffers.length'
+            }
+            ,{
+                name: "Car Rental Offers",
+                checked: false,
+                url: 'business.car',
+                count: 'carRentalOffers.length'
             }]
     }
 });

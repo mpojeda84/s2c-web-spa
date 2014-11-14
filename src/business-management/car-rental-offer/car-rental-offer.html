@@ -1,0 +1,134 @@
+<form name="formCarRental" ng-submit="saveCarRentalOffer()" novalidate>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="categ">Category</label>
+                    <select id="categ" class="form-control" name="category" ng-model="carRentalOffer.category" ng-options="c for c in ['Economic','Mid', 'High']" required></select>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="min">Num. Days</label>
+                            <input type="number" id="min"
+                                   ng-model="carRentalOffer.numDays"
+                                   class="form-control" name="days" min='1' required/>
+                        </div>
+                        <div ng-messages="formCarRental.days.$error" ng-if="formCarRental.days.$dirty"
+                             ng-messages-include="common/validation/messages.html"
+                             class="errors">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" id="price"
+                                   ng-model="carRentalOffer.price"
+                                   class="form-control" name="price" min='0' required/>
+                        </div>
+                        <div ng-messages="formCarRental.price.$error" ng-if="formCarRental.price.$dirty"
+                             ng-messages-include="common/validation/messages.html"
+                             class="errors">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="carRentalOffer.special">
+                        Special
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="carRentalOffer.active">
+                        Active
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <region-selector title="Select Provinces" selected="selected" columns="3"></region-selector>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label>Description</label>
+                <textarea class="form-control" rows="3" ng-model="carRentalOffer.description"></textarea>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-success pull-right" type="submit" ng-disabled="formCarRental.$invalid">Save</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Num. Days
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Special
+                </th>
+                <th>
+                    Active
+                </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Del
+                </th>
+            </tr>
+            </thead>
+
+            <tbody ng-show="carRentalOffers == null ||carRentalOffers.length == 0">
+                <tr>
+                    <td colspan="7">There are no offers yet</td>
+                </tr>
+            </tbody>
+
+            <tbody ng-show="carRentalOffers.length > 0">
+
+            <tr ng-repeat="offer in carRentalOffers"
+                ng-class-even="'active'">
+                <td>
+                    {{offer.category}}
+                </td>
+                <td>
+                    {{offer.numDays}}
+                </td>
+                <td>
+                    {{offer.price}}
+                </td>
+                <td>
+                    {{offer.special}}
+                </td>
+                <td>
+                    {{offer.active}}
+                </td>
+                <td>
+                    <a href="" ng-click="editCarRentalOffer($index)">Edit</a>
+                </td>
+                <td>
+                    <a href="" ng-click="deleteCarRentalOffer($index)">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</form>

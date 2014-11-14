@@ -67,6 +67,12 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
             controller:'flightOfferCtrl',
             data: { subtitle: 'Flight Offers' }
         })
+        .state('business.car', {
+            url: '/business/car',
+            templateUrl: 'business-management/car-rental-offer/car-rental-offer.html',
+            controller:'carRentalOfferCtrl',
+            data: { subtitle: 'Car Rental Offers' }
+        })
         // Personal
         .state('personal', {
             abstract:true,

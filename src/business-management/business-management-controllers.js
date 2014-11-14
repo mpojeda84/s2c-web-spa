@@ -19,6 +19,7 @@ businessManagement
             $scope.paperworkOffers = businessPersistenceSrv.paperworkOffers;
             $scope.callOffers = businessPersistenceSrv.callOffers;
             $scope.flightOffers = businessPersistenceSrv.flightOffers;
+            $scope.carRentalOffers = businessPersistenceSrv.carRentalOffers;
 
             //Menu Elements
             $scope.menu = menuPersistenceSrv.menuItems;
