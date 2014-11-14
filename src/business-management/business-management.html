@@ -7,10 +7,11 @@
             <div class="navbar-inner">
                 <ul class="nav">
                     <li ng-repeat="item in menu">
-                        <a ui-sref="{{ item.url }}">
-                            <img src="images/active.jpg" ng-show="item.checked && $index > 1" width="20" height="15" style="float: left; margin-left: -20px;">
-                            {{ item.name }}
-                            <span class="badge pull-right">{{ $eval(item.count) }}</span></a>
+                        <!--
+                        <img src="images/active.jpg" ng-show="item.checked && $index > 1" width="40" height="30" style="float: left; margin-left: -40px;">
+                        -->
+                        <input type="checkbox" ng-model="item.checked" ng-show="$index > 1" style="float: left; display: inline; margin-top: 14px; margin-left: -15px;">
+                        <a ui-sref="{{ item.url }}">{{ item.name }}<span class="badge pull-right">{{ $eval(item.count) }}</span></a>
                     </li>
                 </ul>
             </div>
@@ -20,7 +21,7 @@
         <div class="checkbox" ng-if="menuItem.url.indexOf('.home') == -1 && menuItem.url.indexOf('.basic') == -1">
             <label>
                 <input type="checkbox" ng-model="menuItem.checked">
-                <span ng-class="menuItem.checked ? 'label-success' : 'label-primary'" class="label">Activate Offers</span>
+                <span ng-class="menuItem.checked ? 'label-danger' : 'label-success'" class="label"><span ng-show="!menuItem.checked">Activate Offers</span> <span ng-show="menuItem.checked">Deactivate Offers</span></span>
             </label>
         </div>
         <div s2c-disabled="!menuItem.checked" >
