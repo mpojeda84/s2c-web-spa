@@ -20,11 +20,6 @@ businessManagement
             $scope.callOffers = businessPersistenceSrv.callOffers;
             $scope.flightOffers = businessPersistenceSrv.flightOffers;
 
-            //Checkbox on Menu
+            //Menu Elements
             $scope.menu = menuPersistenceSrv.menuItems;
-
-            $scope.handleCheck = function (menuItem) {
-                $scope.menuItem = menuItem;
-                $state.go(menuItem.url);
-            }
         }]);

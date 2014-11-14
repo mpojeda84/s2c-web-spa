@@ -14,11 +14,6 @@ personalManagement
 
             $scope.packageOffers = personalPersistenceSrv.packageOffers;
 
-            //Checkbox on Menu
+            //Menu Elements
             $scope.menu = menuPersonalPersistenceSrv.menuItems;
-
-            $scope.handleCheck = function (menuItem) {
-                $scope.menuItem = menuItem;
-                $state.go(menuItem.url);
-            }
         }]);
