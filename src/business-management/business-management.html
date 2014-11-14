@@ -7,7 +7,7 @@
             <div class="navbar-inner">
                 <ul class="nav">
                     <li ng-repeat="item in menu">
-                        <a ui-sref="{{ item.url }}">{{ item.name }}<span class="badge pull-right">{{ $eval(item.count) }}</span></a>
+                        <a ui-sref="{{ item.url }}">{{ item.name }}<span class="badge pull-right" ng-class="{'progress-bar-success': item.checked }">{{ $eval(item.count) }}</span></a>
                     </li>
                 </ul>
             </div>
