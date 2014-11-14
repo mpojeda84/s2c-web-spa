@@ -1,3 +1,4 @@
+<form name="formPackage" ng-submit="savePackageOffer()" novalidate>
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
@@ -6,13 +7,21 @@
                     <label for="min">Min. Weight</label>
                     <input type="number" id="min"
                            ng-model="packageOffer.minimumWeight"
-                           class="form-control"/>
+                           class="form-control" name="minimum" min='0' required/>
+                </div>
+                <div ng-messages="formPackage.minimum.$error" ng-if="formPackage.minimum.$dirty"
+                     ng-messages-include="common/validation/messages.html"
+                     class="errors">
                 </div>
                 <div class="form-group">
                     <label for="maxSize">Max. Size</label>
                     <input type="number" id="maxSize"
                            ng-model="packageOffer.maximumSize"
-                           class="form-control"/>
+                           class="form-control" name="maxSize" min='0' required/>
+                </div>
+                <div ng-messages="formPackage.maxSize.$error" ng-if="formPackage.maxSize.$dirty"
+                     ng-messages-include="common/validation/messages.html"
+                     class="errors">
                 </div>
             </div>
             <div class="col-md-2">
@@ -20,11 +29,15 @@
                     <label for="max">Max. Weight</label>
                     <input type="number" id="max"
                            ng-model="packageOffer.maximumWeight"
-                           class="form-control"/>
+                           class="form-control" name="maximum" min='0' required/>
+                </div>
+                <div ng-messages="formPackage.maximum.$error" ng-if="formPackage.maximum.$dirty"
+                     ng-messages-include="common/validation/messages.html"
+                     class="errors">
                 </div>
                 <div class="form-group">
                     <label for="categ">Category</label>
-                    <select id="categ" class="form-control" ng-model="packageOffer.category" ng-options="c for c in ['A','B', 'C']"></select>
+                    <select id="categ" class="form-control" name="category" ng-model="packageOffer.category" ng-options="c for c in ['A','B', 'C']" required></select>
                 </div>
             </div>
             <div class="col-md-2">
@@ -59,7 +72,7 @@
             </div>
         </div>
         <div>
-            <button class="btn btn-success pull-right" ng-click="savePackageOffer()">Save</button>
+            <button class="btn btn-success pull-right" type="submit" ng-disabled="formPackage.$invalid">Save</button>
         </div>
     </div>
 </div>
@@ -141,3 +154,4 @@
         </table>
     </div>
 </div>
+</form>

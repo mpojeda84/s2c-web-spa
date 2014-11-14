@@ -1,10 +1,11 @@
+<form name="formPaperwork" ng-submit="savePaperworkOffer()" novalidate>
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="type">Type</label>
-                    <select class="form-control" id="type" ng-model="paperworkOffer.type">
+                    <select class="form-control" id="type" required ng-model="paperworkOffer.type" name="type">
                         <option>Passport Updates</option>
                         <option>Residence</option>
                         <option>Citizenship</option>
@@ -34,7 +35,7 @@
             </div>
         </div>
         <div>
-            <button class="btn btn-success pull-right" ng-click="savePaperworkOffer()">Save</button>
+            <button class="btn btn-success pull-right" type="submit" ng-disabled="formPaperwork.$invalid">Save</button>
         </div>
     </div>
 </div>
@@ -97,3 +98,4 @@
         </table>
     </div>
 </div>
+</form>

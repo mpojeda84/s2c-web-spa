@@ -1,10 +1,15 @@
+<form name="formFlight" ng-submit="saveFlightOffer(); formFlight.$setPristine()" novalidate>
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="departurePort">Departure Port</label>
-                    <input type="text" class="form-control" id="departurePort" placeholder="Departure Port" ng-model="flightOffer.departurePort">
+                    <input type="text" class="form-control" id="departurePort" placeholder="Departure Port" ng-model="flightOffer.departurePort" required name="departure">
+                </div>
+                <div ng-messages="formFlight.departure.$error" ng-if="formFlight.departure.$dirty"
+                     ng-messages-include="common/validation/messages.html"
+                     class="errors">
                 </div>
             </div>
             <div class="col-md-2">
@@ -32,7 +37,7 @@
             </div>
         </div>
         <div>
-            <button class="btn btn-success pull-right" ng-click="saveFlightOffer()">Save</button>
+            <button class="btn btn-success pull-right" type="submit" ng-disabled="formFlight.$invalid">Save</button>
         </div>
     </div>
 </div>
@@ -102,3 +107,4 @@
         </table>
     </div>
 </div>
+</form>

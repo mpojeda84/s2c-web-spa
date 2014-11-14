@@ -1,14 +1,19 @@
+<form name="formPackage" ng-submit="savePackageOffer(); formPackage.$setPristine()" novalidate>
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
             <div class="col-md-5">
                 <label for="dep">Departure Date</label>
                 <p class="input-group">
-                    <input id="dep" type="text" class="form-control" datepicker-popup="MM/dd/yyyy" ng-model="packageOffer.departureDate" is-open="opened" min-date="minDate" ng-required="true" show-button-bar="false" />
+                    <input id="dep" type="text" class="form-control" datepicker-popup="MM/dd/yyyy" ng-model="packageOffer.departureDate" is-open="opened" min-date="minDate" ng-required="true" show-button-bar="false" name="departureDate"/>
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
                 </p>
+                <div ng-messages="formPackage.departureDate.$error" ng-if="formPackage.departureDate.$dirty"
+                     ng-messages-include="common/validation/messages.html"
+                     class="errors">
+                </div>
             </div>
         </div>
         <div class="row">
@@ -17,13 +22,21 @@
                     <label for="min">Min. Weight</label>
                     <input type="number" id="min"
                            ng-model="packageOffer.minimumWeight"
-                           class="form-control"/>
+                           class="form-control" name="minimum" min="0" required/>
+                </div>
+                <div ng-messages="formPackage.minimum.$error" ng-if="formPackage.minimum.$dirty"
+                     ng-messages-include="common/validation/messages.html"
+                     class="errors">
                 </div>
                 <div class="form-group">
                     <label for="maxSize">Max. Size</label>
                     <input type="number" id="maxSize"
                            ng-model="packageOffer.maximumSize"
-                           class="form-control"/>
+                           class="form-control" name="maximumSize" min="0" required/>
+                </div>
+                <div ng-messages="formPackage.maximumSize.$error" ng-if="formPackage.maximumSize.$dirty"
+                     ng-messages-include="common/validation/messages.html"
+                     class="errors">
                 </div>
             </div>
             <div class="col-md-3">
@@ -31,11 +44,15 @@
                     <label for="max">Max. Weight</label>
                     <input type="number" id="max"
                            ng-model="packageOffer.maximumWeight"
-                           class="form-control"/>
+                           class="form-control" name="maximum" min="0" required/>
+                </div>
+                <div ng-messages="formPackage.maximum.$error" ng-if="formPackage.maximum.$dirty"
+                     ng-messages-include="common/validation/messages.html"
+                     class="errors">
                 </div>
                 <div class="form-group">
                     <label for="categ">Package Category</label>
-                    <select id="categ" class="form-control" ng-model="packageOffer.category" ng-options="c for c in ['A','B', 'C']"></select>
+                    <select id="categ" class="form-control" ng-model="packageOffer.category" required ng-options="c for c in ['A','B', 'C']"></select>
                 </div>
             </div>
             <div class="col-md-2">
@@ -70,7 +87,7 @@
             </div>
         </div>
         <div>
-            <button class="btn btn-success pull-right" ng-click="savePackageOffer()">Save</button>
+            <button class="btn btn-success pull-right" type="submit" ng-disabled="formPackage.$invalid">Save</button>
         </div>
     </div>
 </div>

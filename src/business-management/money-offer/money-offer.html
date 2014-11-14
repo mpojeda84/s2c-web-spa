@@ -1,3 +1,4 @@
+<form name="formMoney" ng-submit="saveMoneyOffer()" novalidate>
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
@@ -10,7 +11,11 @@
                     <label for="minimum">Minimum</label>
                     <input type="number" id="minimum"
                            ng-model="moneyOffer.minimum"
-                           class="form-control"/>
+                           class="form-control" name="minimum" min='0' required/>
+                </div>
+                <div ng-messages="formMoney.minimum.$error" ng-if="formMoney.minimum.$dirty"
+                     ng-messages-include="common/validation/messages.html"
+                     class="errors">
                 </div>
             </div>
             <div class="col-md-2">
@@ -19,10 +24,14 @@
                     <select id="currenTarg" class="form-control" ng-model="moneyOffer.currencyTarget" ng-options="c for c in ['CUC','USD', 'EUR']"></select>
                 </div>
                 <div class="form-group">
-                    <label for="currenTarg">Maximum</label>
-                    <input type="number" id="maximun"
+                    <label for="maximum">Maximum</label>
+                    <input type="number" id="maximum"
                            ng-model="moneyOffer.maximum"
-                           class="form-control"/>
+                           class="form-control" name="maximum" min='0' required/>
+                </div>
+                <div ng-messages="formMoney.maximum.$error" ng-if="formMoney.maximum.$dirty"
+                     ng-messages-include="common/validation/messages.html"
+                     class="errors">
                 </div>
             </div>
             <div class="col-md-2">
@@ -54,7 +63,7 @@
             </div>
         </div>
         <div>
-            <button class="btn btn-success pull-right " ng-click="saveMoneyOffer()">Save</button>
+            <button class="btn btn-success pull-right " type="submit" ng-disabled="formMoney.$invalid">Save</button>
         </div>
   </div>
 </div>
@@ -129,3 +138,4 @@
         </table>
     </div>
 </div>
+</form>

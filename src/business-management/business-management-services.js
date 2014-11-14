@@ -42,7 +42,7 @@ businessManagement
                 special:null,
                 minimumWeight:1,
                 maximumWeight:100,
-                maximumSize:null,
+                maximumSize:0,
                 pickup:null,
                 category:null
             }
@@ -62,7 +62,7 @@ businessManagement
                 active:null,
                 description:null,
                 special:null,
-                price:null
+                price:0
             }
         },
         newFlightOffer:function(){

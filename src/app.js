@@ -3,7 +3,7 @@
  */
 
 var app = angular.module('app', [
-    'ngAnimate',
+    'ngMessages',
     'ui.router',
     'ui.bootstrap',
     'pascalprecht.translate',

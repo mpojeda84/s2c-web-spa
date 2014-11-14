@@ -1,3 +1,4 @@
+<form name="formBasic" ng-submit="saveBasicInformation()" novalidate>
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
@@ -7,23 +8,35 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" ng-model="personal.name"
-                                   class="form-control" placeholder="Name"/>
+                                   class="form-control" placeholder="Name" ng-pattern="/^[a-zA-Z\s]*$/" required/>
+                        </div>
+                        <div ng-messages="formBasic.name.$error" ng-if="formBasic.name.$dirty"
+                             ng-messages-include="common/validation/messages.html"
+                             class="errors">
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="gender">Gender</label>
-                            <select  class="form-control" ng-model="personal.gender" id="gender">
+                            <select  class="form-control" ng-model="personal.gender" id="gender" name="gender" required>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
+                        </div>
+                        <div ng-messages="formBasic.gender.$error" ng-if="formBasic.gender.$dirty"
+                             ng-messages-include="common/validation/messages.html"
+                             class="errors">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="phone">Phone</label>
                             <input type="text" id="phone" name="phone" ng-model="personal.phone"
-                                   class="form-control" placeholder="Phone"/>
+                                   class="form-control" placeholder="Phone" ng-pattern="/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/"/>
+                        </div>
+                        <div ng-messages="formBasic.phone.$error" ng-if="formBasic.phone.$dirty"
+                             ng-messages-include="common/validation/messages.html"
+                             class="errors">
                         </div>
                     </div>
                 </div>
@@ -48,9 +61,10 @@
                     </div>
                 </div>
                 <div>
-                    <button class="btn pull-right btn-success" ng-click="saveBasicInformation()">Save</button>
+                    <button class="btn pull-right btn-success" type="submit" ng-disabled="formBasic.$invalid">Save</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</form>
