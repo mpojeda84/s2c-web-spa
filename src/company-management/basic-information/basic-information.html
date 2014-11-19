@@ -1,0 +1,32 @@
+<form name="formCompany" ng-submit="saveCompanyInformation()" novalidate>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" ng-model="company.name" required
+                   class="form-control" placeholder="Name" ng-pattern="/^[a-zA-Z\s]*$/"/>
+            <div ng-messages="formCompany.name.$error" ng-if="formCompany.name.$dirty"
+                 ng-messages-include="common/validation/messages.html"
+                 class="errors">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="url">Website</label>
+                <input type="url" id="url" name="url" ng-model="company.url"
+                       class="form-control" placeholder="http://www.mysite.com"/>
+            </div>
+            <div ng-messages="formCompany.url.$error" ng-if="formCompany.url.$dirty"
+                 ng-messages-include="common/validation/messages.html"
+                 class="errors">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button class="btn pull-left btn-success" type="submit" ng-disabled="formCompany.$invalid">Save</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column col-md-12">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nobis provident similique. A ab animi, corporis eligendi eos esse eveniet inventore ipsa, modi neque obcaecati quam reiciendis repudiandae ullam, voluptates.</p>
+        </div>
+    </div>
+</form>

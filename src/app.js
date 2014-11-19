@@ -12,7 +12,8 @@ var app = angular.module('app', [
     'appDirectives',
     //logical modules:
     'businessManagement',
-    'personalManagement' //,
+    'personalManagement',
+    'companyManagement' //,
     //reusable components:
     //'component1'
 ]);
@@ -20,6 +21,15 @@ var app = angular.module('app', [
 app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translateProvider', '$injector', function ($httpProvider, $stateProvider, $urlRouterProvider, $translateProvider, $injector) {
 
     $stateProvider
+        .state('company', {
+            abstract:true,
+            templateUrl: 'company-management/company-management.html',
+            controller: 'companyManagementCtrl'
+        })
+        .state('company.basic', {
+            templateUrl: 'company-management/basic-information/basic-information.html',
+            controller: 'basicInformationCompanyCtrl'
+        })
         .state('business', {
             abstract:true,
             templateUrl: 'business-management/business-management.html',
@@ -103,8 +113,8 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
         })
     ;
     $urlRouterProvider
-        .when('', '/business/home')
-        .when('/', '/business/home');
+        .when('', '/company/basic')
+        .when('/', '/company/basic');
 
     $translateProvider.useStaticFilesLoader({
         prefix: 'common/translation/locale-',

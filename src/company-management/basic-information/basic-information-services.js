@@ -1,0 +1,5 @@
+
+companyManagement.factory('basicInformationCompanySrv', function() {
+
+});
+
