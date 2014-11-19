@@ -22,11 +22,7 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
 
     $stateProvider
         .state('company', {
-            abstract:true,
-            templateUrl: 'company-management/company-management.html',
-            controller: 'companyManagementCtrl'
-        })
-        .state('company.basic', {
+            url: '/company',
             templateUrl: 'company-management/basic-information/basic-information.html',
             controller: 'basicInformationCompanyCtrl'
         })
