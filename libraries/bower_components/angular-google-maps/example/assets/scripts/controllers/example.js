@@ -1,32 +1,137 @@
-(function () {
-  var module = angular.module("angular-google-maps-example", ["google-maps"]);
+'use strict';
+angular.module("angular-google-maps-example", ['uiGmapgoogle-maps'])
 
-  module.run(function ($templateCache) {
-    $templateCache.put('control.tpl.html', '<button class="btn btn-sm btn-primary" ng-class="{\'btn-warning\': danger}" ng-click="controlClick()">{{controlText}}</button>');
+.value("rndAddToLatLon", function () {
+  return Math.floor(((Math.random() < 0.5 ? -1 : 1) * 2) + 1);
+})
+
+.config(['uiGmapGoogleMapApiProvider', function (GoogleMapApi) {
+  GoogleMapApi.configure({
+//    key: 'your api key',
+    v: '3.17',
+    libraries: 'weather,geometry,visualization'
   });
+}])
 
-  module.controller('controlController', function ($scope) {
-    $scope.controlText = 'I\'m a custom control';
-    $scope.danger = false;
-    $scope.controlClick = function () {
-      $scope.danger = !$scope.danger;
-      alert('custom control clicked!')
-    };
+.run(['$templateCache', function ($templateCache) {
+  $templateCache.put('control.tpl.html', '<button class="btn btn-sm btn-primary" ng-class="{\'btn-warning\': danger}" ng-click="controlClick()">{{controlText}}</button>');
+}])
+
+.controller('controlController', function ($scope) {
+  $scope.controlText = 'I\'m a custom control';
+  $scope.danger = false;
+  $scope.controlClick = function () {
+    $scope.danger = !$scope.danger;
+    alert('custom control clicked!')
+  };
+})
+
+.controller("ExampleController",['$scope', '$timeout', 'uiGmapLogger', '$http', 'rndAddToLatLon','uiGmapGoogleMapApi'
+    , function ($scope, $timeout, $log, $http, rndAddToLatLon,GoogleMapApi) {
+  $log.doLog = true
+
+  GoogleMapApi.then(function(maps) {
+    $scope.googleVersion = maps.version;
+    maps.visualRefresh = true;
+    $log.info('$scope.map.rectangle.bounds set');
+    $scope.map.rectangle.bounds = new maps.LatLngBounds(
+      new maps.LatLng(55,-100),
+      new maps.LatLng(49,-78)
+    );
+    $scope.map.polylines = [
+    {
+      id: 1,
+      path: [
+        {
+          latitude: 45,
+          longitude: -74
+        },
+        {
+          latitude: 30,
+          longitude: -89
+        },
+        {
+          latitude: 37,
+          longitude: -122
+        },
+        {
+          latitude: 60,
+          longitude: -95
+        }
+      ],
+      stroke: {
+        color: '#6060FB',
+        weight: 3
+      },
+      editable: true,
+      draggable: true,
+      geodesic: true,
+      visible: true,
+      icons: [
+        {
+          icon: {
+            path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
+          },
+          offset: '25px',
+          repeat: '50px'
+        }
+      ]
+    },
+    {
+      id: 2,
+      path: [
+        {
+          latitude: 47,
+          longitude: -74
+        },
+        {
+          latitude: 32,
+          longitude: -89
+        },
+        {
+          latitude: 39,
+          longitude: -122
+        },
+        {
+          latitude: 62,
+          longitude: -95
+        }
+      ],
+      stroke: {
+        color: '#6060FB',
+        weight: 3
+      },
+      editable: true,
+      draggable: true,
+      geodesic: true,
+      visible: true,
+      icons: [
+        {
+          icon: {
+            path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
+          },
+          offset: '25px',
+          repeat: '50px'
+        }
+      ]
+    },
+    {
+      id: 3,
+      path: google.maps.geometry.encoding.decodePath("uowfHnzb}Uyll@i|i@syAcx}Cpj[_wXpd}AhhCxu[ria@_{AznyCnt^|re@nt~B?m|Awn`G?vk`RzyD}nr@uhjHuqGrf^ren@"),
+      stroke: {
+        color: '#4EAE47',
+        weight: 3
+      },
+      editable: false,
+      draggable: false,
+      geodesic: false,
+      visible: true
+    }
+]
   });
-}());
-
-var rndAddToLatLon = function () {
-  return Math.floor(((Math.random() < 0.5 ? -1 : 1) * 2) + 1)
-}
-
-function ExampleController($scope, $timeout, $log, $http, Logger) {
-  Logger.doLog = true
-  // Enable the new Google Maps visuals until it gets enabled by default.
-  // See http://googlegeodevelopers.blogspot.ca/2013/05/a-fresh-new-look-for-maps-api-for-all.html
-  google.maps.visualRefresh = true;
 
   var versionUrl = (window.location.host === "rawgithub.com" || window.location.host === "rawgit.com") ?
-      "http://rawgit.com/nlaplante/angular-google-maps/master/package.json" : "/package.json";
+    "http://rawgit.com/angular-ui/angular-google-maps/master/package.json" : "/package.json";
 
   $http.get(versionUrl).success(function (data) {
     if (!data)
@@ -50,9 +155,9 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
 
   var createRandomMarker = function (i, bounds, idKey) {
     var lat_min = bounds.southwest.latitude,
-        lat_range = bounds.northeast.latitude - lat_min,
-        lng_min = bounds.southwest.longitude,
-        lng_range = bounds.northeast.longitude - lng_min;
+      lat_range = bounds.northeast.latitude - lat_min,
+      lng_min = bounds.southwest.longitude,
+      lng_range = bounds.northeast.longitude - lng_min;
 
     if (idKey == null)
       idKey = "id";
@@ -77,6 +182,7 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
       Logger.info('CLICK CLICK');
     },
     map: {
+      show: true,
       control: {},
       version: "uknown",
       heatLayerCallback: function (layer) {
@@ -106,9 +212,11 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
           latitude: 45,
           longitude: -74,
           showWindow: false,
-          title: 'Marker 2',
           options: {
-            animation: 1
+            animation: 1,
+            labelContent: 'Markers id 1',
+            labelAnchor: "22 0",
+            labelClass: "marker-labels"
           }
         },
         {
@@ -116,7 +224,6 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
           latitude: 15,
           longitude: 30,
           showWindow: false,
-          title: 'Marker 2'
         },
         {
           id: 3,
@@ -124,7 +231,12 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
           latitude: 37,
           longitude: -122,
           showWindow: false,
-          title: 'Plane'
+          title: 'Plane',
+          options: {
+            labelContent: 'Markers id 3',
+            labelAnchor: "26 0",
+            labelClass: "marker-labels"
+          }
         }
       ],
       markers2: [
@@ -171,17 +283,26 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
         {
           mid: 1,
           latitude: 29.302567,
-          longitude: -106.248779
+          longitude: -106.248779,
+          onClicked: function(gMarker,eventName, model){
+
+          }
         },
         {
           mid: 2,
           latitude: 30.369913,
-          longitude: -109.434814
+          longitude: -109.434814,
+          onClicked: function(gMarker,eventName, model){
+
+          }
         },
         {
           mid: 3,
           latitude: 26.739478,
-          longitude: -108.61084
+          longitude: -108.61084,
+          onClicked: function(gMarker,eventName, model){
+
+          }
         }
       ],
       clickMarkers: [
@@ -199,21 +320,26 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
         imageExtension: 'png', imagePath: 'assets/images/cluster', imageSizes: [72]},
       clickedMarker: {
         id: 0,
-        title: ''
+        options:{
+        }
       },
       events: {
         tilesloaded: function (map, eventName, originalEventArgs) {
         },
         click: function (mapModel, eventName, originalEventArgs) {
           // 'this' is the directive's scope
-          $log.log("user defined event: " + eventName, mapModel, originalEventArgs);
+          $log.info("user defined event: " + eventName, mapModel, originalEventArgs);
 
           var e = originalEventArgs[0];
           var lat = e.latLng.lat(),
-              lon = e.latLng.lng();
+            lon = e.latLng.lng();
           $scope.map.clickedMarker = {
             id: 0,
-            title: 'You clicked here ' + 'lat: ' + lat + ' lon: ' + lon,
+            options: {
+              labelContent: 'You clicked here ' + 'lat: ' + lat + ' lon: ' + lon,
+              labelClass: "marker-labels",
+              labelAnchor:"50 0"
+            },
             latitude: lat,
             longitude: lon
           };
@@ -221,9 +347,9 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
           $scope.$apply();
         },
         dragend: function () {
-          self = this;
           $timeout(function () {
             var markers = [];
+
             var id = 0;
             if ($scope.map.mexiMarkers !== null && $scope.map.mexiMarkers.length > 0) {
               var maxMarker = _.max($scope.map.mexiMarkers, function (marker) {
@@ -294,9 +420,40 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
           draggable: true, // optional: defaults to false
           clickable: true, // optional: defaults to true
           editable: true, // optional: defaults to false
-          visible: true // optional: defaults to true
+          visible: true, // optional: defaults to true
+          events:{
+            dblclick: function(){
+              window.alert("circle dblclick");
+            }
+          }
         }
       ],
+      rectangle:{
+        bounds:{},
+        stroke: {
+          color: '#08B21F',
+          weight: 2,
+          opacity: 1
+        },
+        fill: {
+          color: 'pink',
+          opacity: 0.5
+        },
+        events:{
+          dblclick: function(){
+            window.alert("rectangle dblclick");
+          }
+        },
+        draggable: true, // optional: defaults to false
+        clickable: true, // optional: defaults to true
+        editable: true, // optional: defaults to false
+        visible: true // optional: defaults to true
+      },
+      polygonEvents:{
+        dblclick:function(){
+          alert("Polgon Double Clicked!");
+        }
+      },
       polygons: [
         {
           id: 1,
@@ -359,108 +516,17 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
           }
         }
       ],
-      polylines: [
-        {
-          id: 1,
-          path: [
-            {
-              latitude: 45,
-              longitude: -74
-            },
-            {
-              latitude: 30,
-              longitude: -89
-            },
-            {
-              latitude: 37,
-              longitude: -122
-            },
-            {
-              latitude: 60,
-              longitude: -95
-            }
-          ],
-          stroke: {
-            color: '#6060FB',
-            weight: 3
-          },
-          editable: true,
-          draggable: true,
-          geodesic: true,
-          visible: true,
-          icons: [
-            {
-              icon: {
-                path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
-              },
-              offset: '25px',
-              repeat: '50px'
-            }
-          ]
-        },
-        {
-          id: 2,
-          path: [
-            {
-              latitude: 47,
-              longitude: -74
-            },
-            {
-              latitude: 32,
-              longitude: -89
-            },
-            {
-              latitude: 39,
-              longitude: -122
-            },
-            {
-              latitude: 62,
-              longitude: -95
-            }
-          ],
-          stroke: {
-            color: '#6060FB',
-            weight: 3
-          },
-          editable: true,
-          draggable: true,
-          geodesic: true,
-          visible: true,
-          icons: [
-            {
-              icon: {
-                path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
-              },
-              offset: '25px',
-              repeat: '50px'
-            }
-          ]
-        },
-        {
-          id: 3,
-          path: google.maps.geometry.encoding.decodePath("uowfHnzb}Uyll@i|i@syAcx}Cpj[_wXpd}AhhCxu[ria@_{AznyCnt^|re@nt~B?m|Awn`G?vk`RzyD}nr@uhjHuqGrf^ren@"),
-          stroke: {
-            color: '#4EAE47',
-            weight: 3
-          },
-          editable: false,
-          draggable: false,
-          geodesic: false,
-          visible: true
-        }
-      ]
+      polylines: []
     },
     toggleColor: function (color) {
       return color == 'red' ? '#6060FB' : 'red';
     }
 
   });
-  var marker2Dragend = function(marker,eventName,model,args){
-    model.options.labelContent = "Dragged lat: " + model.latitude + " lon: " + model.longitude;
-//    $scope.map.markers2[marker.key-1] = model;
-  };
-  $scope.map.markers2Events= {
-    dragend: marker2Dragend
+  $scope.map.markers2Events = {
+    dragend: function (marker, eventName, model, args) {
+      model.options.labelContent = "Dragged lat: " + model.latitude + " lon: " + model.longitude;
+    }
   };
 
   _.each($scope.map.markers, function (marker) {
@@ -473,11 +539,7 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
     };
   });
 
-  _.each($scope.map.markers2, function (marker) {
-    marker.closeClick = function () {
-      marker.showWindow = false;
-      $scope.$apply();
-    };
+  $scope.map.markers2.forEach( function (marker) {
     marker.onClicked = function () {
       onMarkerClicked(marker);
     };
@@ -490,12 +552,21 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
     $scope.map.dynamicMarkers = [];
     $scope.map.randomMarkers = [];
     $scope.map.mexiMarkers = [];
+    $scope.map.clickMarkers = [];
     $scope.map.polylines = [];
+    $scope.map.polygons = [];
+    $scope.map.polygons2 = [];
+    $scope.map.circles = [];
+    $scope.map.rectangle = null;
     $scope.map.clickedMarker = null;
-    $scope.searchLocationMarker = null;
+    $scope.staticMarker = null;
     $scope.map.infoWindow.show = false;
     $scope.map.templatedInfoWindow.show = false;
-    // $scope.map.infoWindow.coords = null;
+    $scope.map.templatedInfoWindow.coords = null;
+    $scope.map.infoWindowWithCustomClass.show = false
+    $scope.map.infoWindowWithCustomClass.coords = null;
+    $scope.map.infoWindow.show = false
+    $scope.map.infoWindow.coords = null;
   };
   $scope.refreshMap = function () {
     //optional param if you want to refresh you can pass null undefined or false or empty arg
@@ -513,8 +584,8 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
       $scope.map.clusterOptions = angular.fromJson($scope.map.clusterOptionsText);
   });
 
-  var doUglyFn = function(value) {
-    if(value === undefined || value === null){
+  var doUglyFn = function (value) {
+    if (value === undefined || value === null) {
       value = $scope.map.doUgly;
     }
     var json;
@@ -538,7 +609,7 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
     genRandomMarkers(numberOfMarkers, $scope);
   };
 
-  $scope.searchLocationMarker = {
+  $scope.staticMarker = {
     id: 0,
     coords: {
       latitude: 40.1451,
@@ -555,14 +626,15 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
   }
   $scope.onMarkerClicked = onMarkerClicked;
 
-  $scope.clackMarker = function ($markerModel) {
+  $scope.clackMarker = function (gMarker,eventName, model) {
+    alert("clackMarker: " + model);
     $log.log("from clackMarker");
-    $log.log($markerModel);
+    $log.log(model);
   };
 
   $timeout(function () {
     $scope.map.infoWindow.show = true;
-    dynamicMarkers = [
+    var dynamicMarkers = [
       {
         id: 1,
         latitude: 46,
@@ -626,4 +698,4 @@ function ExampleController($scope, $timeout, $log, $http, Logger) {
     });
     $scope.map.dynamicMarkers = dynamicMarkers;
   }, 2000);
-}
+}]);

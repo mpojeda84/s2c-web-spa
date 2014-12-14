@@ -1,7 +1,8 @@
-angular.module("google-maps.directives.api.utils")
-.service "IsReady".ns(), ['$q', '$timeout', ($q, $timeout) ->
+angular.module('uiGmapgoogle-maps.directives.api.utils')
+.service 'uiGmapIsReady', ['$q', '$timeout', ($q, $timeout) ->
   ctr = 0
-  proms= []
+  proms = []
+
   promises = ->
     $q.all proms
 
@@ -11,7 +12,7 @@ angular.module("google-maps.directives.api.utils")
     ctr += 1
 
     instance: ctr
-    deferred : d
+    deferred: d
 
   promises: promises
 
@@ -28,4 +29,8 @@ angular.module("google-maps.directives.api.utils")
           d.resolve(promises())
     ohCrap()
     d.promise
+
+  reset: ->
+    ctr = 0
+    proms.length = 0
 ]

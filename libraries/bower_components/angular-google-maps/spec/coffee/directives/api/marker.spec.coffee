@@ -1,13 +1,6 @@
 describe "directives.api.Marker", ->
   beforeEach ->
-    module "google-maps"
-    module "google-maps.mocks"
-    inject (GoogleApiMock) =>
-      @gmap = new GoogleApiMock()
-      @gmap.mockAPI()
-      @gmap.mockLatLng()
-      @gmap.mockMarker()
-      @gmap.mockEvent()
+    module "uiGmapgoogle-maps.mocks"
 
     @mocks =
       scope:
@@ -30,7 +23,10 @@ describe "directives.api.Marker", ->
           {}
     @timeOutNoW = (fnc, time) =>
       fnc()
-    inject ($rootScope, Marker, $q) =>
+
+    inject ['GoogleApiMock','$rootScope', '$q', 'uiGmapMarker',(GoogleApiMock,$rootScope, $q, Marker) =>
+      @gmap = new GoogleApiMock()
+      @gmap.initAll()
       @$rootScope = $rootScope
       d = $q.defer()
       d.resolve {}
@@ -41,6 +37,7 @@ describe "directives.api.Marker", ->
         @$rootScope.$new()
       @mocks.scope.deferred = d
       @subject = new Marker()
+    ]
 
   it 'can be created', ->
     expect(@subject).toBeDefined()

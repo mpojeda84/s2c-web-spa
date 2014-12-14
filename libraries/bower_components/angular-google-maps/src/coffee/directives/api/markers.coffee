@@ -1,5 +1,5 @@
-angular.module("google-maps.directives.api")
-.factory "Markers", ["IMarker", "MarkersParentModel", (IMarker, MarkersParentModel) ->
+angular.module("uiGmapgoogle-maps.directives.api")
+.factory "uiGmapMarkers", ["uiGmapIMarker", "uiGmapMarkersParentModel","uiGmap_sync", (IMarker, MarkersParentModel,_sync) ->
   class Markers extends IMarker
     constructor: ($timeout) ->
       super($timeout)
@@ -11,23 +11,34 @@ angular.module("google-maps.directives.api")
         doCluster: '=docluster'
         clusterOptions: '=clusteroptions'
         clusterEvents: '=clusterevents'
-        isLabel: '=islabel' #if is truthy consult http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerwithlabel/1.1.9/docs/reference.html for additional options documentation
+        modelsByRef: '=modelsbyref'
 
-      @$timeout = $timeout
       @$log.info @
 
     controller: ['$scope', '$element', ($scope, $element) ->
       $scope.ctrlType = 'Markers'
-      IMarker.handle $scope,$element
+      _.extend @, IMarker.handle($scope,$element)
     ]
 
     link: (scope, element, attrs, ctrl) =>
-      IMarker.mapPromise(scope, ctrl).then (map) =>
-        parentModel = new MarkersParentModel(scope, element, attrs, map, @$timeout)
-        scope.deferred.resolve()
+      parentModel = undefined
+      ready = =>
         if scope.control?
           scope.control.getGMarkers = =>
             parentModel.gMarkerManager?.getGMarkers()
           scope.control.getChildMarkers = =>
             parentModel.markerModels
+        scope.deferred.resolve()
+
+      IMarker.mapPromise(scope, ctrl).then (map) =>
+        mapScope = ctrl.getScope()
+
+        #this is to deal with race conditions in how MarkerClusterer deals with drawing on idle
+        mapScope.$watch 'idleAndZoomChanged', ->
+          _.defer parentModel.gMarkerManager.draw
+
+        parentModel = new MarkersParentModel(scope, element, attrs, map)
+        parentModel.existingPieces.then ->
+          ready()
+
 ]

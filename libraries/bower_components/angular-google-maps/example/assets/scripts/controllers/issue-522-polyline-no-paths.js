@@ -1,5 +1,5 @@
 (function (window, ng) {
-  ng.module('app', ['google-maps'])
+  ng.module('app', ['uiGmapgoogle-maps'])
     .factory('channel', function () {
       return function () {
         var callbacks = [];
@@ -35,7 +35,14 @@
           }
         };
       }])
-    .controller('ctrl', ['$rootScope', '$scope', 'Logger', 'polyChannel', 'clearChannel',
+    .config(['uiGmapGoogleMapApiProvider', function (GoogleMapApi) {
+      GoogleMapApi.configure({
+        //    key: 'your api key',
+        v: '3.17',
+        libraries: 'geometry'
+      });
+    }])
+    .controller('ctrl', ['$rootScope', '$scope', "uiGmapLogger", 'polyChannel', 'clearChannel',
       function ($rootScope, $scope, $log, polyChannel, clearChannel) {
         $scope.map = {
           center: {
@@ -157,12 +164,12 @@
           $scope.map.polys = [];
         });
       }])
-    .run(function ($templateCache, Logger) {
+    .run(['$templateCache', 'uiGmapLogger',function ($templateCache, Logger) {
       Logger.doLog = true;
       Logger.info('polyButton.tpl.html should be in cache');
       $templateCache.put('polyButton.tpl.html',
         '<button class="btn btn-lg btn-primary"  ng-click="polyButton.controlClick()">{{polyButton.controlText}}</button>');
       $templateCache.put('clear.tpl.html',
         '<button class="btn btn-lg btn-primary"  ng-click="clearWidget.controlClick()">{{clearWidget.controlText}}</button>');
-    });
+    }]);
 })(window, angular);
