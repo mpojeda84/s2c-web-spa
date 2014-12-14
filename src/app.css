@@ -23,3 +23,36 @@
     border-color:transparent transparent maroon;
     border-width:5px;
 }
+
+.animate-repeat{
+    display: inline-block;
+    box-sizing:border-box;
+    position:fixed;
+    top:52px;
+    left: 50%;
+    width:50%;
+    margin-left: -25%;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+    -webkit-transition:all linear 1s;
+    transition:all linear 1s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+    opacity:0;
+}
+
+.animate-repeat.ng-leave
+.animate-repeat.ng-leave.ng-leave-active {
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+}

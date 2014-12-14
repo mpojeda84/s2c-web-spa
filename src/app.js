@@ -4,6 +4,7 @@
 
 var app = angular.module('app', [
     'ngMessages',
+    'ngAnimate',
     'ui.router',
     'ui.bootstrap',
     'pascalprecht.translate',
@@ -13,7 +14,8 @@ var app = angular.module('app', [
     //logical modules:
     'businessManagement',
     'personalManagement',
-    'companyManagement' //,
+    'companyManagement', //,
+    'MessageCenterModule'
     //reusable components:
     //'component1'
 ]);
@@ -109,8 +111,8 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
         })
     ;
     $urlRouterProvider
-        .when('', '/company/basic')
-        .when('/', '/company/basic');
+        .when('', '/company')
+        .when('/', '/company');
 
     $translateProvider.useStaticFilesLoader({
         prefix: 'common/translation/locale-',

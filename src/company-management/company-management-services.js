@@ -6,7 +6,8 @@ companyManagement
             id:null,
             name:null,
             website:null
-        }
+        },
+        offices:[]
     }
 });
 
