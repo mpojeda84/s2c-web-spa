@@ -7,7 +7,7 @@ businessManagement
 
             $scope.moneyOffer = businessPersistenceSrv.newMoneyOffer();
             $scope.index = -1;
-            $scope.moneyOffers = businessPersistenceSrv.moneyOffers;
+            $scope.moneyOffers = businessPersistenceSrv.business.moneyOffers;
 
             $scope.deleteMoneyOffer = function(index){
                 $scope.moneyOffers.splice(index,1);

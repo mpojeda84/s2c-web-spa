@@ -7,7 +7,7 @@ businessManagement
 
             $scope.carRentalOffer = businessPersistenceSrv.newCarRentalOffer();
             $scope.index = -1;
-            $scope.carRentalOffers = businessPersistenceSrv.carRentalOffers;
+            $scope.carRentalOffers = businessPersistenceSrv.business.carRentalOffers;
 
             $scope.deleteCarRentalOffer = function(index){
                 $scope.carRentalOffers.splice(index,1);

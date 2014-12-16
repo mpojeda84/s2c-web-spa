@@ -7,7 +7,7 @@ businessManagement
 
             $scope.packageOffer = businessPersistenceSrv.newPackageOffer();
             $scope.index = -1;
-            $scope.packageOffers = businessPersistenceSrv.packageOffers;
+            $scope.packageOffers = businessPersistenceSrv.business.packageOffers;
 
             $scope.deletePackageOffer = function(index){
                 $scope.packageOffers.splice(index,1);

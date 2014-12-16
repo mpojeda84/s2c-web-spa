@@ -14,12 +14,12 @@ businessManagement
                 })
             })
 
-            $scope.moneyOffers = businessPersistenceSrv.moneyOffers;
-            $scope.packageOffers = businessPersistenceSrv.packageOffers;
-            $scope.paperworkOffers = businessPersistenceSrv.paperworkOffers;
-            $scope.callOffers = businessPersistenceSrv.callOffers;
-            $scope.flightOffers = businessPersistenceSrv.flightOffers;
-            $scope.carRentalOffers = businessPersistenceSrv.carRentalOffers;
+            $scope.moneyOffers = businessPersistenceSrv.business.moneyOffers;
+            $scope.packageOffers = businessPersistenceSrv.business.packageOffers;
+            $scope.paperworkOffers = businessPersistenceSrv.business.paperworkOffers;
+            $scope.callOffers = businessPersistenceSrv.business.callOffers;
+            $scope.flightOffers = businessPersistenceSrv.business.flightOffers;
+            $scope.carRentalOffers = businessPersistenceSrv.business.carRentalOffers;
 
             //Menu Elements
             $scope.menu = menuPersistenceSrv.menuItems;

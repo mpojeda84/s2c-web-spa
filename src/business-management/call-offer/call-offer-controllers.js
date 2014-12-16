@@ -7,7 +7,7 @@ businessManagement
 
             $scope.callOffer = businessPersistenceSrv.newCallOffer();
             $scope.index = -1;
-            $scope.callOffers = businessPersistenceSrv.callOffers;
+            $scope.callOffers = businessPersistenceSrv.business.callOffers;
 
             $scope.deleteCallOffer = function(index){
                 $scope.callOffers.splice(index,1);

@@ -8,7 +8,7 @@ businessManagement
 
             $scope.flightOffer = businessPersistenceSrv.newFlightOffer();
             $scope.index = -1;
-            $scope.flightOffers = businessPersistenceSrv.flightOffers;
+            $scope.flightOffers = businessPersistenceSrv.business.flightOffers;
 
             $scope.deleteFlightOffer = function(index){
                 $scope.flightOffers.splice(index,1);

@@ -5,24 +5,8 @@
  */
 businessManagement
     .factory('businessPersistenceSrv', function() {
-    return {
-        basicInformation:{
-            id:null,
-            name:null,
-            phone:null,
-            website:null,
-            location:null,
-            locationDetails:null,
-            disclose:false
-        },
-        moneyOffers:[],
-        packageOffers:[],
-        paperworkOffers:[],
-        callOffers:[],
-        flightOffers:[],
-        carRentalOffers:[],
-        //initializers, just to serve as a structure declaration of this objects
-        newMoneyOffer:function(){
+
+        var newMoneyOffer = function(){
             return{
                 id:null,
                 active:true,
@@ -34,8 +18,8 @@ businessManagement
                 currencyTarget:'CUC',
                 fee:5
             };
-        },
-        newPackageOffer:function(){
+        };
+        var newPackageOffer = function(){
             return {
                 id:null,
                 active:null,
@@ -47,8 +31,8 @@ businessManagement
                 pickup:null,
                 category:null
             }
-        },
-        newPaperworkOffer:function(){
+        };
+        var newPaperworkOffer = function(){
             return {
                 id:null,
                 active:null,
@@ -56,8 +40,8 @@ businessManagement
                 special:null,
                 type:null
             }
-        },
-        newCallOffer:function(){
+        };
+        var newCallOffer = function(){
             return {
                 id:null,
                 active:null,
@@ -65,8 +49,8 @@ businessManagement
                 special:null,
                 price:0
             }
-        },
-        newFlightOffer:function(){
+        };
+        var newFlightOffer = function(){
             return {
                 id:null,
                 active:null,
@@ -76,8 +60,8 @@ businessManagement
                 departurePort:null,
                 lastUpdated:null
             }
-        },
-        newCarRentalOffer:function(){
+        };
+        var newCarRentalOffer = function(){
             return {
                 id:null,
                 active:null,
@@ -87,8 +71,37 @@ businessManagement
                 price:0,
                 numDays:1
             }
+        };
+
+        var newBusiness = function(){
+            return {
+                basicInformation:{
+                    id:null,
+                    phone:null,
+                    location:null,
+                    locationDetails:null,
+                    disclose:false
+                },
+                moneyOffers:[],
+                packageOffers:[],
+                paperworkOffers:[],
+                callOffers:[],
+                flightOffers:[],
+                carRentalOffers:[]
+                //initializers, just to serve as a structure declaration of this objects
+            }
         }
-    }
+
+    return {
+        business:newBusiness(),
+        newBusiness:newBusiness,
+        newMoneyOffer:newMoneyOffer,
+        newPackageOffer: newPackageOffer,
+        newPaperworkOffer: newPaperworkOffer,
+        newCallOffer: newCallOffer,
+        newFlightOffer: newFlightOffer,
+        newCarRentalOffer: newCarRentalOffer
+    };
 
 }).factory('menuPersistenceSrv', function() {
     return {

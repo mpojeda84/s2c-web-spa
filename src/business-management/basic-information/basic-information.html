@@ -6,43 +6,6 @@
                 <div class="row">
                     <div class="col-md-7">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" ng-model="business.name" required
-                                   class="form-control" placeholder="Name" ng-pattern="/^[a-zA-Z\s]*$/"/>
-                            <div ng-messages="formBasic.name.$error" ng-if="formBasic.name.$dirty"
-                                 ng-messages-include="common/validation/messages.html"
-                                 class="errors">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="text" id="phone" name="phone" ng-model="business.phone" required
-                                   class="form-control" placeholder="Phone" ng-pattern="/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/"/>
-                            <div ng-messages="formBasic.phone.$error" ng-if="formBasic.phone.$dirty"
-                                 ng-messages-include="common/validation/messages.html"
-                                 class="errors">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="url">Website</label>
-                            <input type="url" id="url" name="url" ng-model="business.url"
-                                   class="form-control" placeholder="http://www.mysite.com"/>
-                        </div>
-                        <div ng-messages="formBasic.url.$error" ng-if="formBasic.url.$dirty"
-                             ng-messages-include="common/validation/messages.html"
-                             class="errors">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
                             <label for="address">Location</label>
                             <input type="text" id="address" class="form-control" ng-autocomplete="result" details="details" options="options"/>
                         </div>
@@ -52,11 +15,16 @@
                                 Disclose
                             </label>
                         </div>
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <label>Your Current Location:</label>
-                                <span>{{ business.location == undefined ? 'None' : business.location }}</span>
-                            </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" name="phone" ng-model="business.phone" required
+                                   class="form-control" placeholder="Phone" ng-pattern="/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/"/>
+                            <!--<div ng-messages="formBasic.phone.$error" ng-if="formBasic.phone.$dirty"-->
+                                 <!--ng-messages-include="common/validation/messages.html"-->
+                                 <!--class="errors">-->
+                            <!--</div>-->
                         </div>
                     </div>
                 </div>

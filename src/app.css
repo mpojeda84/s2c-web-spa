@@ -6,6 +6,13 @@
 .s2c_overlay{
     position: absolute; width: 100%;height: 100%; z-index: 10; background-color: white; opacity: 0.5;
 }
+
+.ng-invalid-number,
+.ng-invalid-required,
+.ng-invalid-pattern {
+    border-color: red;
+}
+
 .errors.ng-active {
     background:maroon;
     color:white;

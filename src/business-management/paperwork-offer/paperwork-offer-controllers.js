@@ -7,7 +7,7 @@ businessManagement
 
             $scope.paperworkOffer = businessPersistenceSrv.newPaperworkOffer();
             $scope.index = -1;
-            $scope.paperworkOffers = businessPersistenceSrv.paperworkOffers;
+            $scope.paperworkOffers = businessPersistenceSrv.business.paperworkOffers;
 
             $scope.deletePaperworkOffer = function(index){
                 $scope.paperworkOffers.splice(index,1);
