@@ -10,13 +10,11 @@ businessManagement
             $scope.options = null;
             $scope.details = '';
 
-            $scope.business = angular.copy(businessPersistenceSrv.basicInformation);
-            
+            $scope.business = businessPersistenceSrv.business;
+
             $scope.saveBasicInformation = function () {
-                if($scope.result != '') {
-                    $scope.business.location = $scope.result;
-                    $scope.business.locationDetails = $scope.details;
-                }
-                businessPersistenceSrv.basicInformation = $scope.business;
+                alert("salvando");
             }
+
+
         }]);

@@ -1,8 +1,94 @@
 <div class="page-header">
-    <h2>Cubamax <small>Company </small></h2>
+    <h2>Company</h2>
 </div>
-<div class="row">
-    <div class="col-md-12">
+<form name="formCompany" ng-submit="saveCompanyInformation()" novalidate>
+    <div class="row">
+        <div class="col-md-4" ng-class="{ 'has-error': formCompany.name.$invalid }">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" ng-model="company.name" required
+                   class="form-control" placeholder="Name" ng-pattern="/^[a-zA-Z\s]*$/"/>
+            <span class="control-label" ng-show="formCompany.name.$error.pattern">
+                Invalid
+            </span>
 
+        </div>
+        <div class="col-md-4">
+            <div class="form-group" ng-class="{ 'has-error': formCompany.website.$invalid }">
+                <label for="url">Website</label>
+                <input type="url" id="url" name="url" ng-model="company.website"
+                       class="form-control" required placeholder="http://www.mysite.com"/>
+            </div>
+            <span class="control-label" ng-show="formCompany.website.$error.url">
+                Invalid
+            </span>
+
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="url">&nbsp;</label>
+                <button class="form-control btn pull-left btn-success" type="submit" ng-click="saveCompany();" ng-disabled="formCompany.$invalid">Save</button>
+            </div>
+            <div class="form-group">
+                <label for="url">&nbsp;</label>
+                <a ui-sref="business.home" class="form-control btn pull-left btn-success">Add new Office</a>
+            </div>
+        </div>
     </div>
-</div>
+    <br />
+    <div class="row">
+        <div class="column col-md-12">
+            <h4>Offices</h4>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Phone
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th>
+                        Edit
+                    </th>
+                    <th>
+                        Del
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody ng-show="offices == null || offices.length == 0">
+                <tr>
+                    <td colspan="5">There are no offers yet</td>
+                </tr>
+                </tbody>
+
+                <tbody ng-show="offices.length > 0">
+
+                <tr ng-repeat="office in offices"
+                    ng-class-even="'active'">
+                    <td>
+                        {{office.basicInformation.name}}
+                    </td>
+                    <td>
+                        {{office.basicInformation.phone}}
+                    </td>
+                    <td>
+                        {{office.basicInformation.location}}
+                    </td>
+                    <td>
+                        <a href="" ng-click="editOffice($index)">Edit</a>
+                    </td>
+                    <td>
+                        <a href="" ng-click="deleteOffice($index)">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+

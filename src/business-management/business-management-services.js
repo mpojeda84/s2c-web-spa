@@ -77,10 +77,12 @@ businessManagement
             return {
                 basicInformation:{
                     id:null,
-                    phone:null,
-                    location:null,
-                    locationDetails:null,
-                    disclose:false
+                    contactInformation: {
+                        phone:null,
+                        email:null
+                    },
+                    fullLocation:null,
+                    discloseLocation:false
                 },
                 moneyOffers:[],
                 packageOffers:[],
@@ -130,7 +132,7 @@ businessManagement
                 count: 'paperworkOffers.length'
             }
             ,{
-                name: "Call Offers",
+                name: "Call Offers (refactor)",
                 checked: false,
                 url: 'business.call',
                 count: 'callOffers.length'
@@ -142,7 +144,7 @@ businessManagement
                 count: 'flightOffers.length'
             }
             ,{
-                name: "Car Rental Offers",
+                name: "Car Rental Offers (refactor)",
                 checked: false,
                 url: 'business.car',
                 count: 'carRentalOffers.length'

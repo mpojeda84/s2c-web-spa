@@ -1,5 +1,0 @@
-
-companyManagement.factory('basicInformationCompanySrv', function() {
-
-});
-

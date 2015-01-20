@@ -12,7 +12,6 @@
   <script src="../libraries/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="../libraries/bower_components/angular-translate/angular-translate.js"></script>
   <script src="../libraries/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-  <script src="../libraries/bower_components/ng-table/ng-table.js"></script>
   <script src='//maps.googleapis.com/maps/api/js?libraries=places&sensor=false'></script>
   <script src='../libraries/isolated_libraries/lodash.underscore.js'></script>
   <script src='../libraries/isolated_libraries/ngAutocomplete.js'></script>
@@ -31,9 +30,6 @@
   <script src="company-management/company-management-directives.js"></script>
   <script src="company-management/company-management-filters.js"></script>
   <script src="company-management/company-management-services.js"></script>
-
-  <script src="company-management/basic-information/basic-information-controllers.js"></script>
-  <script src="company-management/basic-information/basic-information-services.js"></script>
 
   <script src="business-management/business-management.js"></script>
   <script src="business-management/business-management-controllers.js"></script>
@@ -87,7 +83,6 @@
   <script src="components/region-selector/region-selector-services.js"></script>
 
   <link rel="stylesheet" type="text/css" href="../libraries/bower_components/bootstrap/dist/css/bootstrap.css"/>
-  <link rel="stylesheet" type="text/css" href="../libraries/bower_components/ng-table/ng-table.css"/>
   <link rel="stylesheet" type="text/css" href="app.css"/>
 </head>
 
@@ -106,7 +101,7 @@
                 <a class="navbar-brand" href="#/">Sent2Cuba</a>
                 <ul class="nav navbar-nav">
                     <li><a ui-sref="personal.home">Personal</a></li>
-                    <li><a ui-sref="business.home">Company</a></li>
+                    <li><a ui-sref="company">Company</a></li>
                 </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">

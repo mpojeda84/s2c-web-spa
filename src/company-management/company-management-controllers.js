@@ -1,7 +1,16 @@
 
 companyManagement
-    .controller('companyManagementCtrl', ['$rootScope', '$scope','$http', '$log','$modal', '$state', 'mapSrv', 'businessPersistenceSrv',
-        function($rootScope, $scope,  $http, $log, $modal, $state, mapSrv, businessPersistenceSrv) {
+    .controller('companyManagementCtrl', ['$rootScope', '$scope','$http', '$log','$modal', '$state', '$stateParams','mapSrv', 'businessPersistenceSrv', 'companySrv', 'companyPersistenceSrv',
+        function($rootScope, $scope,  $http, $log, $modal, $state, $stateParams, mapSrv, businessPersistenceSrv, companySrv, companyPersistenceSrv) {
 
-            console.log("initialized");
+            companySrv.getCompany($stateParams.companyId)
+                .then(function(company){
+                    companyPersistenceSrv.company = company;
+                    $scope.company = companyPersistenceSrv.company;
+                });
+
+            $scope.saveCompany = function() {
+                companySrv.saveCompany($scope.company);
+            }
+
         }]);

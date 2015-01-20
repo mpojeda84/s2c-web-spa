@@ -24,9 +24,9 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
 
     $stateProvider
         .state('company', {
-            url: '/company',
-            templateUrl: 'company-management/basic-information/basic-information.html',
-            controller: 'basicInformationCompanyCtrl'
+            url: '/company/:companyId',
+            templateUrl: 'company-management/company-management.html',
+            controller: 'companyManagementCtrl'
         })
         .state('business', {
             abstract:true,
@@ -123,6 +123,5 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
 }])
 
 .run(['$rootScope', '$http', '$location', '$state', function ($rootScope, $http, $location, $state) {
-        // mpereira: put init code here, like security interceptors etc
 }]);
 

@@ -5,7 +5,8 @@
   "homepage": "",
   "private": true,
   "dependencies": {
-    "angular": "",
+    "angular": "1.2.28",
+    "angular-messages": "",
     "angular-animate": "",
     "angular-cookies": "",
     "ng-table": "",
@@ -17,7 +18,10 @@
     "angular-bootstrap": "",
     "angular-ui-router": "",
     "angular-translate": "",
-    "angular-translate-loader-static-files" : "",
+    "angular-translate-loader-static-files": "",
     "angular-google-maps": ""
+  },
+  "resolutions": {
+    "angular": "1.2.28"
   }
 }

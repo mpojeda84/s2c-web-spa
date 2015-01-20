@@ -5,13 +5,20 @@
             <div class=" col-md-12">
                 <div class="row">
                     <div class="col-md-7">
+
+                        <div class="form-group">
+                            <label for="address">Email</label>
+                            <input type="text" ng-model="business.contactInformation.email" id="email" class="form-control"/>
+                        </div>
+
                         <div class="form-group">
                             <label for="address">Location</label>
-                            <input type="text" id="address" class="form-control" ng-autocomplete="result" details="details" options="options"/>
+                            <input type="text" id="address" class="form-control" ng-autocomplete="result" details="business.fullLocation" options="options"/>
                         </div>
+
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" ng-model="business.disclose">
+                                <input type="checkbox" ng-model="business.discloseLocation">
                                 Disclose
                             </label>
                         </div>
@@ -19,15 +26,12 @@
                     <div class="col-md-5">
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input type="text" id="phone" name="phone" ng-model="business.phone" required
+                            <input type="text" id="phone" name="phone" ng-model="business.contactInformation.phone" required
                                    class="form-control" placeholder="Phone" ng-pattern="/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/"/>
-                            <!--<div ng-messages="formBasic.phone.$error" ng-if="formBasic.phone.$dirty"-->
-                                 <!--ng-messages-include="common/validation/messages.html"-->
-                                 <!--class="errors">-->
-                            <!--</div>-->
                         </div>
                     </div>
                 </div>
+
                 <div>
                     <button class="btn pull-right btn-success" type="submit" ng-disabled="formBasic.$invalid">Save</button>
                 </div>
