@@ -13,4 +13,18 @@ companyManagement
                 companySrv.saveCompany($scope.company);
             }
 
+            $scope.addNewOffice = function(){
+                $scope.creatingBusiness = true;
+                companySrv.createBusiness($stateParams.companyId)
+                    .then(function(businessId){
+                        $scope.creatingBusiness = false;
+                        $state.go("business.home",{companyId:$stateParams.companyId, businessId:businessId});
+                    }, function(error){
+
+                    });
+
+            }
+
+
+
         }]);

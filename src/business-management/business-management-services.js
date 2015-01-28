@@ -105,7 +105,8 @@ businessManagement
         newCarRentalOffer: newCarRentalOffer
     };
 
-}).factory('menuPersistenceSrv', function() {
+})
+    .factory('menuPersistenceSrv', function() {
     return {
         menuItems:[{
                 name: "Home",
@@ -150,5 +151,25 @@ businessManagement
                 count: 'carRentalOffers.length'
             }]
     }
-});
+
+})
+
+    .factory('businessSrv', [ '$http','$rootScope',function($http, $rootScope) {
+
+        var getBusiness = function(companyId, businessId){
+            return $http.get('http://localhost:8080/company/' + companyId + "/business/" + businessId)
+                .then(function(result) {
+                    return result.data;
+                },
+                function(){
+
+                })
+        };
+
+
+        return {
+            getBusiness:getBusiness
+        }
+
+    }]);
 

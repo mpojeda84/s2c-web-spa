@@ -3,8 +3,8 @@
  */
 businessManagement.factory('basicInformationSrv', function() {
 
-    var saveBasicInformation = function(companyId, business){
-        return $http.post('http://localhost:8080/company/' + companyId + "/business", business)
+    var saveBasicInformation = function(companyId, businessId, business){
+        return $http.put('http://localhost:8080/company/' + companyId + "/business/" + businessId, business)
             .then(function(result) {
                 return result.data;
             },

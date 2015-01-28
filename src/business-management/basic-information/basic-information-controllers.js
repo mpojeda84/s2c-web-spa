@@ -10,8 +10,6 @@ businessManagement
             $scope.options = null;
             $scope.details = '';
 
-            $scope.business = businessPersistenceSrv.business;
-
             $scope.saveBasicInformation = function () {
                 alert("salvando");
             }

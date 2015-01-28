@@ -34,9 +34,21 @@ companyManagement
             })
         };
 
+        var createBusiness = function(companyId){
+            return $http.post('http://localhost:8080/company/' + companyId + "/business/",{})
+                .then(function(result) {
+                    return result.data;
+                },
+                function(){
+
+                })
+        };
+
+
         return {
             getCompany:getCompany,
-            saveCompany:saveCompany
+            saveCompany:saveCompany,
+            createBusiness:createBusiness
         }
 
     }])

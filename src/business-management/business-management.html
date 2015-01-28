@@ -12,6 +12,11 @@
         </div>
     </div>
     <div class="column col-md-9">
+        <div>
+            <button class="btn btn-md btn-warning pull-right" type="button">Cancel</button>
+            <button class="btn btn-md btn-success pull-right" type="button" style="margin-right: 5px;">Save</button>
+        </div>
+
         <div class="checkbox" ng-if="menuItem.url.indexOf('.home') == -1 && menuItem.url.indexOf('.basic') == -1">
             <label>
                 <input type="checkbox" ng-model="menuItem.checked">
