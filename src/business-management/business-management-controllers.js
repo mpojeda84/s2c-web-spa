@@ -2,8 +2,8 @@
  * Created by mpereira on 7/30/2014.
  */
 businessManagement
-    .controller('businessManagementCtrl', ['$rootScope', '$scope','$http', '$log','$modal', '$state', '$stateParams', 'mapSrv', 'businessPersistenceSrv', 'businessSrv', 'menuPersistenceSrv', 'companyPersistenceSrv', 'messageCenterService',
-        function($rootScope, $scope,  $http, $log, $modal, $state, $stateParams, mapSrv, businessPersistenceSrv, businessSrv, menuPersistenceSrv, companyPersistenceSrv, message) {
+    .controller('businessManagementCtrl', ['$rootScope', '$scope','$http', '$log','$modal', '$state', '$stateParams', 'mapSrv', 'businessPersistenceSrv', 'businessSrv', 'menuPersistenceSrv', 'companyPersistenceSrv',  'business',
+        function($rootScope, $scope,  $http, $log, $modal, $state, $stateParams, mapSrv, businessPersistenceSrv, businessSrv, menuPersistenceSrv, companyPersistenceSrv,  business) {
 
             $scope.$on('$stateChangeSuccess', function(event, toState){
                 $scope.subtitle = toState.data.subtitle;
@@ -14,18 +14,23 @@ businessManagement
                 })
             })
 
-
-            businessSrv.getBusiness($stateParams.companyId, $stateParams.businessId)
-                .then(function(result){
-                    businessPersistenceSrv.business = result;
-                    $scope.business = businessPersistenceSrv.business;
-                }, function(error){
-
-                });
-
+            businessPersistenceSrv.business = business;
+            $scope.business = businessPersistenceSrv.business;
 
             //Menu Elements
             $scope.menu = menuPersistenceSrv.menuItems;
+
+            $scope.save = function(){
+                businessSrv.saveBusiness(businessPersistenceSrv.business)
+                    .then(function(result){
+
+                    }, function(error){
+
+                    });
+            };
+            $scope.goBack = function(){
+                $state.go('company',{companyId:$stateParams.companyId});
+            }
 
 
         }]);

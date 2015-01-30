@@ -159,6 +159,7 @@ businessManagement
         var getBusiness = function(companyId, businessId){
             return $http.get('http://localhost:8080/company/' + companyId + "/business/" + businessId)
                 .then(function(result) {
+                    result.data.fullLocation = JSON.parse(result.data.fullLocation);
                     return result.data;
                 },
                 function(){
@@ -166,9 +167,21 @@ businessManagement
                 })
         };
 
+        var saveBusiness = function(business){
+            business.address = business.fullLocation.formatted_address;
+            business.fullLocation = JSON.stringify(business.fullLocation);
+            return $http.put('http://localhost:8080/company/' + business.companyId + "/business/" + business.id, business)
+                .then(function(result) {
+                    return result.data;
+                },
+                function(){
+
+                })
+        };
 
         return {
-            getBusiness:getBusiness
+            getBusiness:getBusiness,
+            saveBusiness: saveBusiness
         }
 
     }]);

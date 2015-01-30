@@ -34,8 +34,20 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$translate
             templateUrl: 'business-management/business-management.html',
             controller: 'businessManagementCtrl',
             resolve: {
-                companyId: function($stateParams){
+                business: function($stateParams, businessSrv, $q){
                     console.debug($stateParams.companyId);
+
+
+                    var deferred = $q.defer();
+
+                    businessSrv.getBusiness($stateParams.companyId, $stateParams.businessId)
+                        .then(function(result){
+                            deferred.resolve(result);
+                        }, function(error){
+
+                        });
+
+                    return deferred.promise;
                 }
             }
         })

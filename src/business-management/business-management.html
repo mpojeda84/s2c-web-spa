@@ -13,8 +13,8 @@
     </div>
     <div class="column col-md-9">
         <div>
-            <button class="btn btn-md btn-warning pull-right" type="button">Cancel</button>
-            <button class="btn btn-md btn-success pull-right" type="button" style="margin-right: 5px;">Save</button>
+            <button class="btn btn-md btn-warning pull-right" ng-click="goBack()" type="button">Back to Company</button>
+            <button class="btn btn-md btn-success pull-right" ng-click="save()" type="button" style="margin-right: 5px;">Save</button>
         </div>
 
         <div class="checkbox" ng-if="menuItem.url.indexOf('.home') == -1 && menuItem.url.indexOf('.basic') == -1">

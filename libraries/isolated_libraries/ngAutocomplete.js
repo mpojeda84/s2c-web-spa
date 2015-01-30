@@ -89,7 +89,7 @@ angular.module( "ngAutocomplete", [])
                 scope.$watch(scope.watchOptions, function () {
                     initOpts()
                     newAutocomplete()
-                    element[0].value = '';
+                    element[0].value = scope.details == null ? '' : scope.details.formatted_address;
                     scope.ngAutocomplete = element.val();
                 }, true);
             }
